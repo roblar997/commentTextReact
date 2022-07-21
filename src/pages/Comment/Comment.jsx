@@ -15,12 +15,12 @@ export default class Comment extends React.Component {
                     <div class="container">
                         <div>
                             <TitleSearch></TitleSearch>
-                            <Commentsearchinfo ></Commentsearchinfo>
+                            <CommentSearchInfo ></CommentSearchInfo>
 
-                            <Commentschema></Commentschema>
+                            <CommentSchema></CommentSchema>
                         </div>
 
-                        <Commentlist></Commentlist>
+                        <CommentList></CommentList>
                     </div>
                 </main>
             </Fragment>

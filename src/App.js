@@ -10,6 +10,7 @@ import React, { Fragment } from 'react'
 export default class App extends React.Component {
     render() {
         return (
+
             <Switch>
                 <Route exact path="/"><Comment/></Route>
                 <Route exact path="/comment"><Comment/></Route>
