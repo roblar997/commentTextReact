@@ -12,7 +12,7 @@ export default class DeleteText extends React.Component {
 
                     <div class="container">
                         <p class="h3" style="margin-top: 10px">Text titles </p>
-                        <select #titleselectTitles style="width:150px; margin-top: 10px">
+                        <select id="titleselectTitles" style="width:150px; margin-top: 10px">
                             {titleList.map((tittel,indexVal)=>(<option value='{ tittel }'> { tittel }</option>))}
                     </select>
                     <br />

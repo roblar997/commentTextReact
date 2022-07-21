@@ -23,12 +23,12 @@ export  default class commentSearchInfo extends React.Component {
                     <p>
                         <label for="likes">Likes <i class="fa fa-thumbs-up" aria-hidden="true"><strong> {likes} </strong></i></label>
 
-                        <input type="text" id="likes" readonly style="border:0; color:black; font-weight:bold;">
+                        <input type="text" id="likes" readonly style="border:0; color:black; font-weight:bold;"/>
                     </p>
                     <p>
                         <label for="dislikes">Dislikes <i class="fa fa-thumbs-down" aria-hidden="true"><strong> {dislikes} </strong> </i></label>
 
-                        <input type="text" id="dislikes" readonly style="border:0; color:black; font-weight:bold;">
+                        <input type="text" id="dislikes" readonly style="border:0; color:black; font-weight:bold;"/>
                     </p>
                     <p class="h3" style="margin-top: 10px">Color map of comment density </p>
 
