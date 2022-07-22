@@ -14,10 +14,8 @@ export default class Comment extends React.Component {
 
                     <div class="container">
                         <div>
-                            <TitleSearch></TitleSearch>
-                            <CommentSearchInfo ></CommentSearchInfo>
-
-                            <CommentSchema></CommentSchema>
+                    
+                  
                         </div>
 
                         <CommentList></CommentList>

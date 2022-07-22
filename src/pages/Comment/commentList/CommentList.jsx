@@ -1,7 +1,25 @@
 
 
 import React, { Fragment } from 'react'
+
 export default class CommentList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            ishighlighting: true,
+            currentTitle: {
+              id: 1,
+              text: "",
+              title: "test",
+              isdeleted: false
+            },
+            filteredtimelines: [],
+            highlightetcommentstart: 10,
+            highlightetcommentend: 0
+
+
+        };
+    }
     render() {
         return (
             <Fragment>
@@ -9,24 +27,24 @@ export default class CommentList extends React.Component {
 
     
     <p class="h3">Comments       <i onClick="refresh()" class="fa fa-refresh m-1" id="refreshComments"></i></p>
-    <p class="h3" style="margin-top: 10px">Is a comment of following </p>
-    {ishighlighting && <div id="commentHighlight"  style="overflow-y: auto;width:320px; height:220px; margin-top: 10px" readonly> 
-                          <span style="background-color:white ; color:black">{currentTitle.text.substring(0,highlightetcommentstart.valueOf())}</span>
-                          <span style="background-color: lightskyblue; color: black">{currentTitle.text.substring(highlightetcommentstart.valueOf(),highlightetcommentend.valueOf())}</span>
-                          <span style="background-color:white ; color:black">{currentTitle.text.substring(highlightetcommentend.valueOf(),currentTitle.text.length)}</span>
+                    <p class="h3" style={{ marginTop: '10px' }}>Is a comment of following </p>
+                    {this.state.ishighlighting && <div id="commentHighlight" style={{ overflowY: 'auto', width: '320px', height: '220px', marginTop: '10px' }} readonly> 
+                        <span style={{ backgroundColor: 'white', color: 'black' }} >{this.state.currentTitle.text.substring(0, this.state.highlightetcommentstart)}</span>
+                        <span style={{ backgroundColor: 'lightskyblue', color: 'black' }}>{this.state.currentTitle.text.substring(this.state.highlightetcommentstart, this.state.highlightetcommentend)}</span>
+                        <span style={{ backgroundColor: 'white', color: 'black' }} >{this.state.currentTitle.text.substring(this.state.highlightetcommentend, this.state.currentTitle.text.length)}</span>
                        </div>
     }
     
     <div id="comments" class="container"></div>
-    {filteredtimelines.map((filteredtimeline)=>(
+    {this.state.filteredtimelines.map((filteredtimeline)=>(
     <div  class="card bg-outline-info text-dark  mt-5" id='{filteredtimeline.id}'>
 
       <div class="card-body">
 
-        { filteredtimeline && filteredtimeline.start 
-                           && filteredtimeline.end  
-                           && <p  style="width: 50%;background-color:lightskyblue">
-                               <strong>Commenting</strong>: {currentTitle.text.substring(filteredtimeline.start.valueOf(),filteredtimeline.end.valueOf())}
+                {filteredtimeline && filteredtimeline.start
+                    && filteredtimeline.end
+                    && <p style={{ width: '50%', backgroundColor: 'lightskyblue' }} >
+                        <strong>Commenting</strong>: {this.state.currentTitle.text.substring(this.state.filteredtimeline.start, this.state.filteredtimeline.end)}
                               </p>
         }
         <p>

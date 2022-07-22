@@ -10,13 +10,8 @@ import React, { Fragment } from 'react'
 export default class App extends React.Component {
     render() {
         return (
+          <Comment/>
 
-            <Switch>
-                <Route exact path="/"><Comment/></Route>
-                <Route exact path="/comment"><Comment/></Route>
-                <Route exact path="/createText"><CreateText/></Route>
-                <Route exact path="/deleteText"><DeleteText/></Route>
-            </Switch>
        
         )
     }
