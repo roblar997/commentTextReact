@@ -18,7 +18,8 @@ export default class titelSearch extends React.Component {
             highlightetcommentstart: 10,
             highlightetcommentend: 0,
             selectStart: 0,
-            selectEnd: 10
+            selectEnd: 10,
+            titleList:[]
 
 
         };
@@ -27,13 +28,13 @@ export default class titelSearch extends React.Component {
         return (
             <Fragment>
             <div>
-                <p class="h3" style="margin-top: 10px">Text titles </p>
-                <select id="titleselectTitles" style="width:150px; margin-top: 10px">
-                    {titleList.map((tittel, indexVal)=> (<option  value='{ tittel }'> { tittel }</option>))}
+                    <p class="h3" style={{ marginTop: '10px' }} >Text titles </p>
+                    <select id="titleselectTitles" style={{ width: '150px', marginTop: '10px' }} >
+                    {this.state.titleList.map((tittel, indexVal)=> (<option  value='{ tittel }'> { tittel }</option>))}
                 </select>
 
   </div >
-            <button onClick= "loadText()" id="btnGetText" class="btn btn-success" style = "margin-top:10px" > Load text</button >
+                <button onClick="loadText()" id="btnGetText" class="btn btn-success" style={{ marginTop: '10px' }} > Load text</button >
                 <input type="hidden" id="currentTitleId" value="-1" />
 
                 </Fragment>

@@ -41,12 +41,12 @@ export default class commentSchema extends React.Component {
 
                         <label for="commentUser"> User: </label>
                         <input class="form-control input-sm w-25" formControlName="user" id="commentUser" placeholder=" user" /><br/>
-                            {!validUser && <span style='{{color:red}}' > Wrong input</span> }
+                            {!this.state.validUser && <span style={{color:'red'}} > Wrong input</span> }
                     </div>
                     <div class="form-group">
                         <label for="commentComment"> Comment: </label>
                         <textarea class="form-control input-sm w-25" formControlName="text" id="commentComment" placeholder="Comment" rows="10"></textarea>
-                            {!validText && <span style={{ color: 'red' }} > Wrong input</span> }
+                            {!this.state.validText && <span style={{ color: 'red' }} > Wrong input</span> }
                 </div>
 
                 <div class="form-group">
@@ -55,7 +55,7 @@ export default class commentSchema extends React.Component {
                         <label for="likeYes">Like:</label> <input formControlName="likedislikeother" value="like" type="radio" id="likeYes" name="likedislikeother"/>  <br/>
                             <label for="dislikeYes">Dislike:</label> <input formControlName="likedislikeother" value="dislike" type="radio" id="dislikeYes" name="likedislikeother"/><br/>
                                 <label for="likeDislikeNo">Don't know:</label>  <input formControlName="likedislikeother" value="dontknow" type="radio" id="likeDislikeNo" name="likedislikeother" checked/><br/>
-                                            {!validlikedislikeother && <span style="color:red" > Wrong input</span>}
+                                {!this.state.validlikedislikeother && <span style="color:red" > Wrong input</span>}
                       </div>
 
                             </div>

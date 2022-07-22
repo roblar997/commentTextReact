@@ -45,27 +45,27 @@ export default class commentSearchInfo extends React.Component {
                     <p>
                         <label for="likes">Likes <i class="fa fa-thumbs-up" aria-hidden="true"><strong> {likes} </strong></i></label>
 
-                        <input type="text" id="likes" readonly style={{ border: 0, color: 'black'; fontWeight: 'bold' }} />
+                        <input type="text" id="likes" readonly style={{ border: 0, color: 'black', fontWeight: 'bold' }} />
                     </p>
                     <p>
                         <label for="dislikes">Dislikes <i class="fa fa-thumbs-down" aria-hidden="true"><strong> {dislikes} </strong> </i></label>
 
-                        <input type="text" id="dislikes" readonly style="border:0; color:black; font-weight:bold;"/>
+                        <input type="text" id="dislikes" readonly style={{border:0, color:'black', fontWeight:'bold'}}/>
                     </p>
-                    <p class="h3" style="margin-top: 10px">Color map of comment density </p>
+                    <p class="h3" style={{ marginTop: '10px' }} >Color map of comment density </p>
 
                     {countingList.map((value, indexVal) => (<span>
                         <div id="textDensityMap" style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>
 
 
-                            {value.valueOf() >= 32 && <span style='background-color:red'>{currentTitle.text[indexVal]}</span>}
-                            {value.valueOf() >= 16 && value.valueOf() < 32 && <span style='background-color: yellow'>{currentTitle.text[indexVal]}</span>}
-                    {value.valueOf() >= 8 && value.valueOf() < 16 && <span style='background-color: lightyellow'>{currentTitle.text[indexVal]}</span>}
-                    {value.valueOf() >= 4 && value.valueOf() < 8 && <span style='background-color: green'>{currentTitle.text[indexVal]}</span>}
+                            {value.valueOf() >= 32 && <span style={{ backgroundColor: 'red' }} >{currentTitle.text[indexVal]}</span>}
+                            {value.valueOf() >= 16 && value.valueOf() < 32 && <span style={{ backgroundColor: 'yellow' }} >{currentTitle.text[indexVal]}</span>}
+                    {value.valueOf() >= 8 && value.valueOf() < 16 && <span style={{ backgroundColor: 'lightyellow' }} >{currentTitle.text[indexVal]}</span>}
+                    {value.valueOf() >= 4 && value.valueOf() < 8 && <span style={{ backgroundColor: 'green' }} >{currentTitle.text[indexVal]}</span>}
                     
-                            {value.valueOf() >= 2 && value.valueOf() < 4 && <span style='background-color: lightgreen' > {currentTitle.text[indexVal]}</span>}
-                            {value.valueOf() >= 1 && value.valueOf() < 2  && <span  style = 'background-color: lightskyblue' > {currentTitle.text[indexVal]}</span >}
-                            {value.valueOf() == 0 &&  <span  style = 'background-color:white' > {currentTitle.text[indexVal]}</span >}
+                            {value.valueOf() >= 2 && value.valueOf() < 4 && <span style={{backgroundColor: 'lightgreen'}} > {currentTitle.text[indexVal]}</span>}
+                            {value.valueOf() >= 1 && value.valueOf() < 2 && <span style={{ backgroundColor: 'lightskyblue' }} > {currentTitle.text[indexVal]}</span >}
+                            {value.valueOf() == 0 && <span style={{ backgroundColor: 'white' }} > {currentTitle.text[indexVal]}</span >}
 
                         </div >      </span >))} 
 
