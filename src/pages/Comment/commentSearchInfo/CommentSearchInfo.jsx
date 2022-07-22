@@ -1,20 +1,42 @@
 
 import React, { Fragment } from 'react'
-export  default class commentSearchInfo extends React.Component {
+export default class commentSearchInfo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            ishighlighting: true,
+            validUser: true,
+            validText: true,
+            validlikedislikeother: true,
+            currentTitle: {
+                id: 1,
+                text: "",
+                title: "test",
+                isdeleted: false
+            },
+            filteredtimelines: [],
+            highlightetcommentstart: 10,
+            highlightetcommentend: 0,
+            selectStart: 0,
+            selectEnd: 10
+
+
+        };
+    }
     render() {
         return (
             <React.Fragment>
                 <div>
                     <div class="form-group centered">
-                        <p class="h3" style="margin-top: 10px">Text to comment </p>
-                        {currentTitle && currentTitle.text && <textarea id="textToComment" onMouseUp="captureSelected()" style="overflow-y: auto; width:320px; height:320px; margin-top: 10px" readonly>{currentTitle.text}</textarea>}
-                        {!(currentTitle && currentTitle.text) && <textarea style="overflow-y: auto; width:320px; height:320px; margin-top: 10px" readonly>
+                        <p class="h3" style={{ marginTop: '10px' }} >Text to comment </p>
+                        {this.state.currentTitle && this.state.currentTitle.text && <textarea id="textToComment" onMouseUp="captureSelected()" style={{overflowY: 'auto', width:'320px', height:'320px', marginTop: '10px'}} readonly>{currentTitle.text}</textarea>}
+                        {!(this.state.currentTitle && this.state.currentTitle.text) && <textarea style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>
                             Choose a title and press load text, to get it pasted in here
                         </textarea>}
 
                     </div>
 
-                    <p class="h3" style="margin-top: 10px">Search for comments by marking text </p>
+                    <p class="h3" style={{ marginTop: '10px' }} >Search for comments by marking text </p>
                     <label for="percentEle">
                         <strong>Percent(%) </strong>: Adjust this value to capture more comments inside.<br />
                         100% requires full match of comment. Lesser values capture smaller <br /> comments inside area
@@ -23,7 +45,7 @@ export  default class commentSearchInfo extends React.Component {
                     <p>
                         <label for="likes">Likes <i class="fa fa-thumbs-up" aria-hidden="true"><strong> {likes} </strong></i></label>
 
-                        <input type="text" id="likes" readonly style="border:0; color:black; font-weight:bold;"/>
+                        <input type="text" id="likes" readonly style={{ border: 0, color: 'black'; fontWeight: 'bold' }} />
                     </p>
                     <p>
                         <label for="dislikes">Dislikes <i class="fa fa-thumbs-down" aria-hidden="true"><strong> {dislikes} </strong> </i></label>
@@ -33,7 +55,7 @@ export  default class commentSearchInfo extends React.Component {
                     <p class="h3" style="margin-top: 10px">Color map of comment density </p>
 
                     {countingList.map((value, indexVal) => (<span>
-                        <div id="textDensityMap" style="overflow-y: auto; width:320px; height:320px; margin-top: 10px" readonly>
+                        <div id="textDensityMap" style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>
 
 
                             {value.valueOf() >= 32 && <span style='background-color:red'>{currentTitle.text[indexVal]}</span>}
