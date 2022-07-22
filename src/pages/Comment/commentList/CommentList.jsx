@@ -13,7 +13,7 @@ export default class CommentList extends React.Component {
               title: "test",
               isdeleted: false
             },
-            filteredtimelines: [],
+            filteredtimelines: [{ id: 2, user: "tre" }, {id:5,user:"tt"}],
             highlightetcommentstart: 10,
             highlightetcommentend: 0
 
@@ -36,8 +36,8 @@ export default class CommentList extends React.Component {
     }
     
     <div id="comments" class="container"></div>
-    {this.state.filteredtimelines.map((filteredtimeline)=>(
-    <div  class="card bg-outline-info text-dark  mt-5" id='{filteredtimeline.id}'>
+                    {this.state.filteredtimelines.map((filteredtimeline) => (
+                        <div class="card bg-outline-info text-dark  mt-5" id="{{filteredtimeline.user}}">
 
       <div class="card-body">
 

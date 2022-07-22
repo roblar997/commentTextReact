@@ -10,7 +10,7 @@ export default class titelSearch extends React.Component {
             validlikedislikeother: true,
             currentTitle: {
                 id: 1,
-                text: "",
+                text: "fafaffffffffffffffff",
                 title: "test",
                 isdeleted: false
             },
@@ -19,7 +19,7 @@ export default class titelSearch extends React.Component {
             highlightetcommentend: 0,
             selectStart: 0,
             selectEnd: 10,
-            titleList:[]
+            titleList:["tt","tte"]
 
 
         };
@@ -30,7 +30,7 @@ export default class titelSearch extends React.Component {
             <div>
                     <p class="h3" style={{ marginTop: '10px' }} >Text titles </p>
                     <select id="titleselectTitles" style={{ width: '150px', marginTop: '10px' }} >
-                    {this.state.titleList.map((tittel, indexVal)=> (<option  value='{ tittel }'> { tittel }</option>))}
+                        {this.state.titleList.map((tittel, indexVal) => (<option value={{ tittel } }> { tittel }</option>))}
                 </select>
 
   </div >

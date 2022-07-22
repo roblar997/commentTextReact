@@ -5,7 +5,8 @@ import CommentSearchInfo from "./commentSearchInfo/CommentSearchInfo.jsx"
 import TitleSearch from "./titleSearch/titleSearch.jsx"
 import React, { Fragment } from 'react'
 export default class Comment extends React.Component {
-    constructor(props) {
+
+       constructor(props) {
         super(props);
         this.state = {
             ishighlighting: true,
@@ -36,8 +37,10 @@ export default class Comment extends React.Component {
 
                     <div class="container">
                         <div>
-                    
-                  
+                            <TitleSearch></TitleSearch>
+                            <CommentSearchInfo ></CommentSearchInfo>
+
+                            <CommentSchema></CommentSchema>
                         </div>
 
                         <CommentList></CommentList>

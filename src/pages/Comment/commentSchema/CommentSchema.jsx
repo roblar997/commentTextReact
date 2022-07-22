@@ -10,14 +10,14 @@ export default class commentSchema extends React.Component {
             validlikedislikeother:true,
             currentTitle: {
                 id: 1,
-                text: "",
+                text: "sefesfseesf",
                 title: "test",
                 isdeleted: false
             },
             filteredtimelines: [],
-            highlightetcommentstart: 10,
-            highlightetcommentend: 0,
-            selectStart: 0,
+            highlightetcommentstart: 3,
+            highlightetcommentend: 5,
+            selectStart: 3,
             selectEnd:10
 
 
@@ -29,7 +29,7 @@ export default class commentSchema extends React.Component {
                 <p class="h3" style={{ marginTop: '10px' }} >Commenting following text </p>
 
 
-                <div id="isCommenting" style={{ overflowY: 'auto', width: '320px'; height: '220px', marginTop: '10px' }} readonly>
+                <div id="isCommenting" style={{ overflowY: 'auto', width: '320px', height: '220px', marginTop: '10px' }} readonly>
                     <span style={{ backgroundColor: 'white', color: 'black' }} >{this.state.currentTitle.text.substring(0, this.state.selectStart) }</span>
                     <span style={{ backgroundColor: 'lightskyblue', color: 'black' }}>{this.state.currentTitle.text.substring(this.state.selectStart, this.state.selectEnd) }</span>
                     <span style={{ backgroundColor: 'white', color: 'black' }}>{this.state.currentTitle.text.substring(this.state.selectEnd, this.state.currentTitle.text.length) }</span>
@@ -55,7 +55,7 @@ export default class commentSchema extends React.Component {
                         <label for="likeYes">Like:</label> <input formControlName="likedislikeother" value="like" type="radio" id="likeYes" name="likedislikeother"/>  <br/>
                             <label for="dislikeYes">Dislike:</label> <input formControlName="likedislikeother" value="dislike" type="radio" id="dislikeYes" name="likedislikeother"/><br/>
                                 <label for="likeDislikeNo">Don't know:</label>  <input formControlName="likedislikeother" value="dontknow" type="radio" id="likeDislikeNo" name="likedislikeother" checked/><br/>
-                                {!this.state.validlikedislikeother && <span style="color:red" > Wrong input</span>}
+                                {!this.state.validlikedislikeother && <span style={{ color: 'red' }} > Wrong input</span>}
                       </div>
 
                             </div>
