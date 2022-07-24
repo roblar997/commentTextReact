@@ -8,7 +8,7 @@ import CommentList  from "./pages/Comment/commentList/CommentList.jsx"
 import CommentSchema from "./pages/Comment/commentSchema/CommentSchema.jsx"
 import React, { Fragment } from 'react'
 import { BrowserRouter as Router, Routes, Route, MemoryRouter } from 'react-router-dom';
-
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class App extends React.Component {
     render() {
