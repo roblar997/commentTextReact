@@ -1,18 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
 import Comment from "./pages/Comment/Comment.jsx"
+import Navbar from "./navbar/Navbar.jsx"
 import CreateText from "./pages/createText/CreateText.jsx"
 import DeleteText from "./pages/deleteText/DeleteText.jsx"
 import CommentList  from "./pages/Comment/commentList/CommentList.jsx"
 import CommentSchema from "./pages/Comment/commentSchema/CommentSchema.jsx"
 import React, { Fragment } from 'react'
+import { BrowserRouter as Router, Routes, Route, MemoryRouter } from 'react-router-dom';
+
 
 export default class App extends React.Component {
     render() {
         return (
-          <Comment/>
+            <Fragment>
 
-       
+                <Router>
+                    <Navbar/>
+                <Routes>
+                        <Route path="/" element={<Comment />} />
+                        <Route path="comment" element={<Comment />} />
+                        <Route path="createText" element={<CreateText />} />
+                        <Route path="deleteText" element={<DeleteText />} />
+                    </Routes>
+                </Router>
+            </Fragment>
         )
     }
 
