@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Comment from "./pages/Comment/Comment.jsx"
+import ChangeCommentModal from "./pages/Comment/modal/ChangeCommentModal.jsx"
 import Navbar from "./navbar/Navbar.jsx"
 import CreateText from "./pages/createText/CreateText.jsx"
 import DeleteText from "./pages/deleteText/DeleteText.jsx"
@@ -16,7 +17,7 @@ export default class App extends React.Component {
             <Fragment>
 
                 <Router>
-                    <Navbar/>
+                    <Navbar />
                 <Routes>
                         <Route path="/" element={<Comment />} />
                         <Route path="comment" element={<Comment />} />

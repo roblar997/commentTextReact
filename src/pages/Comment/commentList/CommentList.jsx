@@ -1,7 +1,11 @@
 
 
 import React, { Fragment } from 'react'
-
+import Modal from "react-bootstrap/Modal";
+import ModalBody from "react-bootstrap/ModalBody";
+import ModalHeader from "react-bootstrap/ModalHeader";
+import ModalFooter from "react-bootstrap/ModalFooter";
+import ModalTitle from "react-bootstrap/ModalTitle";
 export default class CommentList extends React.Component {
     constructor(props) {
         super(props);
@@ -9,16 +13,27 @@ export default class CommentList extends React.Component {
             ishighlighting: true,
             currentTitle: {
               id: 1,
-              text: "",
+              text: "fffa",
               title: "test",
               isdeleted: false
             },
-            filteredtimelines: [{ id: 2, user: "tre" }, {id:5,user:"tt"}],
+            filteredtimelines: [{ id: 2, user: "tre",text:"tekotiee" }, {id:5,user:"tt",text:"jfjejej"}],
             highlightetcommentstart: 10,
-            highlightetcommentend: 0
+            highlightetcommentend: 0,
+            show: false,
+            currentId: -1
 
 
         };
+        this.close = this.close.bind(this);
+        this.open = this.open.bind(this);
+    }
+    close = () => {
+        this.setState({ show: false });
+    }
+    open = (id, user, text, like, dislike, isdeleted) => () => {
+         this.setState({ show: true });
+         
     }
     render() {
         return (
@@ -57,14 +72,47 @@ export default class CommentList extends React.Component {
         <p> <strong>like</strong>: {filteredtimeline.like}</p>
         <p> <strong>dislike</strong>: {filteredtimeline.dislike}  </p>
         <p> <strong>deleted</strong>: {filteredtimeline.isdeleted}</p>
-        <button type="button" onClick="highlightText(filteredtimeline.id)" class="btn btn-info col-2 m-1 p-1">Highlight commented text</button>
-        <button type="button" onClick="getChangbox(filteredtimeline.id )" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>
+          <button type="button" onClick="highlightText(filteredtimeline.id)" class="btn btn-info col-2 m-1 p-1">Highlight commented text</button>
+                                <button type="button" onClick={this.open(filteredtimeline.id, filteredtimeline.user, filteredtimeline.text, filteredtimeline.like, filteredtimeline.dislike, filteredtimeline.isdeleted)} data-bs-toggle= "modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>
         <button type="button" onClick="removeById(filteredtimeline.id)" class="btn btn-danger col-1 m-1 p-1">Remove</button>
 
       </div>
     </div>
     ))}
-  </div>
+                </div>
+                <Modal show={this.state.show}>
+                    <ModalHeader>
+                        <ModalTitle>Change comment</ModalTitle>
+                    </ModalHeader>
+                    <ModalBody>
+                        <form >
+                            <div class="form-group">
+                                <label for="commentUser"> User: </label>
+                                <input class="form-control input-sm w-50" id="commentUserChange" placeholder=" user" /><br />
+
+                            </div>
+                            <div class="form-group">
+                                <label for="commentComment"> Comment: </label>
+                                <textarea class="form-control input-sm w-50" id="commentCommentChange" placeholder="Comment" rows="10">
+                                </textarea>
+
+                            </div>
+
+                            <div class="form-group">
+                                <header> Do I like this part of text?</header>
+                                <div>
+                                    <label for="likeYes">Like:</label> <input value="like" type="radio" id="likeYesChange" name="likedislikeother" />  <br />
+                                    <label for="dislikeYes">Dislike:</label> <input value="dislike" type="radio" id="dislikeYesChange" name="likedislikeother" /><br />
+                                    <label for="likeDislikeNo">Don't know:</label>  <input value="dontknow" type="radio" id="likeDislikeNoChange" name="likedislikeother" checked />
+
+                                </div>
+                            </div>
+                        </form></ModalBody>
+                    <ModalFooter>
+                        <button type="button" class="btn btn-success" onClick={this.close}>Change</button>
+                        <button type="button" class="btn btn-secondary" onClick={this.close} >Close</button>
+                    </ModalFooter>
+                </Modal>
                 </Fragment>
         )
     }
