@@ -51,7 +51,10 @@ export default class CommentList extends React.Component {
       
         
     }
-   
+    doChange = () => {
+        this.setState({ show: false });
+    }
+
     render() {
         return (
             <Fragment>
@@ -126,7 +129,7 @@ export default class CommentList extends React.Component {
                             </div>
                         </form></ModalBody>
                     <ModalFooter>
-                        <button type="button" class="btn btn-success" onClick={this.close}>Change</button>
+                        <button type="button" class="btn btn-success" onClick={this.doChange}>Change</button>
                         <button type="button" class="btn btn-secondary" onClick={this.close} >Close</button>
                     </ModalFooter>
                 </Modal>
