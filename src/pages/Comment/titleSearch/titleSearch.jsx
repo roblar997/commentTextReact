@@ -19,53 +19,60 @@ export default class titelSearch extends React.Component {
             highlightetcommentend: 0,
             selectStart: 0,
             selectEnd: 10,
-            titleList:["tt","tte"]
+            titleList: ["tt", "tte"],
+            title: "toto"
 
 
         };
+        this.selectStartChange = this.selectStartChange.bind(this);
+        this.selectEndChange = this.selectEndChange.bind(this);
+        this.selectedTextChange = this.selectedTextChange.bind(this);
+        this.tidslinjerListChange = this.titleChange.bind(this);
+        this.titleListChange = this.titleChange.bind(this);
+        this.titleChange = this.titleChange.bind(this);
+        this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
     }
-    selectStartChange = (selectStart) => {
+    selectStartChange = (selectStart) => () => {
         this.props.selectStartChangeCallback(selectStart)
 
 
     }
 
 
-    selectEndChange = (selectedEnd) => {
+    selectEndChange = (selectedEnd) => () => {
         this.props.selectedEndChangeCallback(selectedEnd)
     }
 
 
 
-    selectedTextChange = (selectedText) => {
+    selectedTextChange = (selectedText) => () => {
         this.props.selectedTextChangeCallback(selectedText)
     }
 
-    commandTidslinjeWrapperChange = (commandTidslinjeWrapper) => {
+    commandTidslinjeWrapperChange = (commandTidslinjeWrapper) => () => {
         this.props.commandTidslinjeWrapperCallback(commandTidslinjeWrapper)
     }
 
-    tidslinjerListChange = (tidslinjerList) => {
+    tidslinjerListChange = (tidslinjerList) => () => {
         this.props.tidslinjerListCallback(tidslinjerList)
     }
 
 
-    titleListChange = (titleList) => {
+    titleListChange = (titleList) => () => {
         this.props.titleListCallback(titleList)
     }
 
 
 
-    titleChange = (title) => {
-        this.props.titleCallback(title)
+    titleChange = (title) => () => {
+        this.props.titleChangeCallback(title)
     }
 
 
 
-    filteredTimelineListChange = (tidslinjerList) => {
+    filteredTimelineListChange = (tidslinjerList) => () => {
         this.props.tidslinjerListCallback(tidslinjerList)
     }
-
     render() {
         return (
             <Fragment>

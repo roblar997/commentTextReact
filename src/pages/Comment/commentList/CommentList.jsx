@@ -28,12 +28,20 @@ export default class CommentList extends React.Component {
                 text: "tester",
                 like: false,
                 dislike: false
-            }
+            },
+            title:"aa"
 
 
         };
         this.close = this.close.bind(this);
         this.open = this.open.bind(this);
+        this.selectStartChange = this.selectStartChange.bind(this);
+        this.selectEndChange = this.selectEndChange.bind(this);
+        this.selectedTextChange = this.selectedTextChange.bind(this);
+        this.tidslinjerListChange = this.titleChange.bind(this);
+        this.titleListChange = this.titleChange.bind(this);
+        this.titleChange = this.titleChange.bind(this);
+        this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
     }
 
     close = () => {
@@ -56,47 +64,48 @@ export default class CommentList extends React.Component {
     doChange = () => {
         this.setState({ show: false });
     }
-    selectStartChange = (selectStart) => {
+    selectStartChange = (selectStart) => () => {
         this.props.selectStartChangeCallback(selectStart)
 
 
     }
 
 
-    selectEndChange = (selectedEnd) => {
+    selectEndChange = (selectedEnd) => () => {
         this.props.selectedEndChangeCallback(selectedEnd)
     }
 
 
 
-    selectedTextChange = (selectedText) => {
+    selectedTextChange = (selectedText) => () => {
         this.props.selectedTextChangeCallback(selectedText)
     }
 
-    commandTidslinjeWrapperChange = (commandTidslinjeWrapper) => {
+    commandTidslinjeWrapperChange = (commandTidslinjeWrapper) => () => {
         this.props.commandTidslinjeWrapperCallback(commandTidslinjeWrapper)
     }
 
-    tidslinjerListChange = (tidslinjerList) => {
+    tidslinjerListChange = (tidslinjerList) => () => {
         this.props.tidslinjerListCallback(tidslinjerList)
     }
 
 
-    titleListChange = (titleList) => {
-        this.props.titleListCallback(titleList)
+    titleListChange = (titleList) => () => {
+       this.props.titleListCallback(titleList)
     }
 
 
 
-    titleChange = (title) => {
-        this.props.titleCallback(title)
+    titleChange = (title) => () => {
+        this.props.titleChangeCallback(title)
     }
 
 
 
-    filteredTimelineListChange = (tidslinjerList) => {
+    filteredTimelineListChange = (tidslinjerList) => () => {
         this.props.tidslinjerListCallback(tidslinjerList)
     }
+
     render() {
         return (
             <Fragment>
@@ -127,14 +136,14 @@ export default class CommentList extends React.Component {
         <p>
           <strong>id</strong>: {filteredtimeline.id }
         </p>
-        <p><strong>user</strong>: {filteredtimeline.user}</p>
+        <p><strong>user</strong>: {this.props.title}</p>
         <p> <strong>timestampCreated</strong>:{filteredtimeline.timestampCreated} </p>
         <p> <strong>timestampChanged</strong>:{filteredtimeline.timestampChanged}</p>
         <p><strong> text</strong>:  {filteredtimeline.text}</p>
         <p> <strong>like</strong>: {String(filteredtimeline.like)}</p>
         <p> <strong>dislike</strong>: {String(filteredtimeline.dislike)}  </p>
         <p> <strong>deleted</strong>: {String(filteredtimeline.isdeleted)}</p>
-          <button type="button" onClick="highlightText(filteredtimeline.id)" class="btn btn-info col-2 m-1 p-1">Highlight commented text</button>
+                                <button type="button" onClick={this.titleChange("ttta")} class="btn btn-info col-2 m-1 p-1">Highlight commented text</button>
                                 <button type="button" onClick={this.open(filteredtimeline.id, filteredtimeline.user, filteredtimeline.text, filteredtimeline.like, filteredtimeline.dislike, filteredtimeline.isdeleted)} data-bs-toggle= "modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>
         <button type="button" onClick="removeById(filteredtimeline.id)" class="btn btn-danger col-1 m-1 p-1">Remove</button>
 

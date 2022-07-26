@@ -25,7 +25,8 @@ export default class Comment extends React.Component {
             selectStart: 0,
             selectEnd: 10,
             selectedText: "",
-            commandTidslinjeWrapper: []
+            commandTidslinjeWrapper: [],
+            title:"sjoko"
 
 
            };
@@ -126,7 +127,7 @@ export default class Comment extends React.Component {
                                 commandTidslinjeWrapperChangeCallback={this.commandTidslinjeWrapperChange}
                                 tidslinjerListChangeCallback={this.tidslinjerListChange}
                                 titleListChangeCallback={this.titleListChange}
-                                titleChangeCallback={this.titleChange(title)}
+                                titleChangeCallback={this.titleChange}
                                 filteredTimelineListChangeCallback={this.filteredTimelineListChange}
                             ></TitleSearch>
                             <CommentSearchInfo
@@ -145,8 +146,9 @@ export default class Comment extends React.Component {
                                 commandTidslinjeWrapperChangeCallback={this.commandTidslinjeWrapperChange}
                                 tidslinjerListChangeCallback={this.tidslinjerListChange}
                                 titleListChangeCallback={this.titleListChange}
-                                titleChangeCallback={this.titleChange(title)}
+                                titleChangeCallback={this.titleChange}
                                 filteredTimelineListChangeCallback={this.filteredTimelineListChange}>
+                                </CommentSearchInfo>
                             <CommentSchema
 
                                 selectStart={this.state.selectStart}
@@ -164,7 +166,7 @@ export default class Comment extends React.Component {
                                 commandTidslinjeWrapperChangeCallback={this.commandTidslinjeWrapperChange}
                                 tidslinjerListChangeCallback={this.tidslinjerListChange}
                                 titleListChangeCallback={this.titleListChange}
-                                titleChangeCallback={this.titleChange(title)}
+                                titleChangeCallback={this.titleChange}
                                 filteredTimelineListChangeCallback={this.filteredTimelineListChange}>
                             </CommentSchema>
                         </div>
@@ -186,7 +188,7 @@ export default class Comment extends React.Component {
                         commandTidslinjeWrapperChangeCallback={this.commandTidslinjeWrapperChange}
                         tidslinjerListChangeCallback={this.tidslinjerListChange}
                         titleListChangeCallback={this.titleListChange}
-                        titleChangeCallback={this.titleChange(title)}
+                        titleChangeCallback={this.titleChange}
                         filteredTimelineListChangeCallback={this.filteredTimelineListChange}>
 
                     </CommentList>
