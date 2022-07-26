@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalFooter from "react-bootstrap/ModalFooter";
+
 import ModalTitle from "react-bootstrap/ModalTitle";
 export default class CommentList extends React.Component {
     constructor(props) {
@@ -34,6 +35,7 @@ export default class CommentList extends React.Component {
         this.close = this.close.bind(this);
         this.open = this.open.bind(this);
     }
+
     close = () => {
         this.setState({ show: false });
     }
@@ -54,7 +56,64 @@ export default class CommentList extends React.Component {
     doChange = () => {
         this.setState({ show: false });
     }
+    selectStartChange = (selectStart) => {
+        this.setState(selectStart, () => {
+            this.props.selectStartChangeCallback(this.state.selectStart);
+        });
 
+
+    }
+
+
+    selectEndChange = (selectedEnd) => {
+        this.setState(selectedEnd, () => {
+            this.props.selectedEndChangeCallback(this.state.selectedEnd);
+        });
+
+    }
+
+
+
+    selectedTextChange = (selectedText) => {
+        this.setState(selectedText, () => {
+            this.props.selectedTextCallback(this.state.selectedText);
+        });
+    }
+
+    commandTidslinjeWrapperChange = (commandTidslinjeWrapper) => {
+        this.setState(commandTidslinjeWrapper, () => {
+            this.props.commandTidslinjeWrapperCallback(this.state.commandTidslinjeWrapper);
+        });
+    }
+
+    tidslinjerListChange = (tidslinjerList) => {
+        this.setState(tidslinjerList, () => {
+            this.props.tidslinjerListCallback(this.state.tidslinjerList);
+        });
+    }
+
+
+    titleListChange = (titleList) => {
+        this.setState(titleList, () => {
+            this.props.titleListCallback(this.state.titleList);
+        });
+    }
+
+
+
+    titleChange = (title) => {
+        this.setState(title, () => {
+            this.props.titleCallback(this.state.title);
+        });
+    }
+
+
+
+    filteredTimelineListChange = (tidslinjerList) => {
+        this.setState(tidslinjerList, () => {
+            this.props.tidslinjerListCallback(this.state.tidslinjerList);
+        });
+    }
     render() {
         return (
             <Fragment>

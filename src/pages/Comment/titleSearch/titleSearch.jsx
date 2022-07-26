@@ -24,6 +24,65 @@ export default class titelSearch extends React.Component {
 
         };
     }
+    selectStartChange = (selectStart) => {
+        this.setState(selectStart, () => {
+            this.props.selectStartChangeCallback(this.state.selectStart);
+        });
+
+
+    }
+
+
+    selectEndChange = (selectedEnd) => {
+        this.setState(selectedEnd, () => {
+            this.props.selectedEndChangeCallback(this.state.selectedEnd);
+        });
+
+    }
+
+
+
+    selectedTextChange = (selectedText) => {
+        this.setState(selectedText, () => {
+            this.props.selectedTextCallback(this.state.selectedText);
+        });
+    }
+
+    commandTidslinjeWrapperChange = (commandTidslinjeWrapper) => {
+        this.setState(commandTidslinjeWrapper, () => {
+            this.props.commandTidslinjeWrapperCallback(this.state.commandTidslinjeWrapper);
+        });
+    }
+
+    tidslinjerListChange = (tidslinjerList) => {
+        this.setState(tidslinjerList, () => {
+            this.props.tidslinjerListCallback(this.state.tidslinjerList);
+        });
+    }
+
+
+    titleListChange = (titleList) => {
+        this.setState(titleList, () => {
+            this.props.titleListCallback(this.state.titleList);
+        });
+    }
+
+
+
+    titleChange = (title) => {
+        this.setState(title, () => {
+            this.props.titleCallback(this.state.title);
+        });
+    }
+
+
+
+    filteredTimelineListChange = (tidslinjerList) => {
+        this.setState(tidslinjerList, () => {
+            this.props.tidslinjerListCallback(this.state.tidslinjerList);
+        });
+    }
+
     render() {
         return (
             <Fragment>
