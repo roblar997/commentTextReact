@@ -120,14 +120,15 @@ export default class Comment extends React.Component {
                                 title={this.state.title}
                                 filteredTimeline={this.state.filteredTimeline}
 
-                                selectStartChangeCallback={(selectStart) => this.selectStartChange(selectStart)}
-                                selectEndChangeCallback={(selectedEnd) => this.selectEndChange(selectedEnd)}
-                                selectedTextChangeCallback={(selectedText) => this.selectedTextChange(selectedText)}
-                                commandTidslinjeWrapperChangeCallback={(commandTidslinjeWrapper) => this.commandTidslinjeWrapperChange(commandTidslinjeWrapper)}
-                                tidslinjerListChangeCallback={(tidslinjerList) => this.tidslinjerListChange(tidslinjerList)}
-                                titleListChangeCallback={(titleList) => this.titleListChange(titleList)}
-                                titleChangeCallback={(title) => this.titleChange(title)}
-                                filteredTimelineListChangeCallback={(tidslinjerList) => this.filteredTimelineListChange(tidslinjerList)}></TitleSearch>
+                                selectStartChangeCallback={this.selectStartChange}
+                                selectEndChangeCallback={this.selectEndChange}
+                                selectedTextChangeCallback={this.selectedTextChange}
+                                commandTidslinjeWrapperChangeCallback={this.commandTidslinjeWrapperChange}
+                                tidslinjerListChangeCallback={this.tidslinjerListChange}
+                                titleListChangeCallback={this.titleListChange}
+                                titleChangeCallback={this.titleChange(title)}
+                                filteredTimelineListChangeCallback={this.filteredTimelineListChange}
+                            ></TitleSearch>
                             <CommentSearchInfo
                                 selectStart={this.state.selectStart}
                                 selectEnd={this.state.selectedEnd}
@@ -138,15 +139,14 @@ export default class Comment extends React.Component {
                                 title={this.state.title}
                                 filteredTimeline={this.state.filteredTimeline}
 
-                                selectStartChangeCallback={(selectStart) => this.selectStartChange(selectStart)}
-                                selectEndChangeCallback={(selectedEnd) => this.selectEndChange(selectedEnd)}
-                                selectedTextChangeCallback={(selectedText) => this.selectedTextChange(selectedText)}
-                                commandTidslinjeWrapperChangeCallback={(commandTidslinjeWrapper) => this.commandTidslinjeWrapperChange(commandTidslinjeWrapper)}
-                                tidslinjerListChangeCallback={(tidslinjerList) => this.tidslinjerListChange(tidslinjerList)}
-                                titleListChangeCallback={(titleList) => this.titleListChange(titleList)}
-                                titleChangeCallback={(title) => this.titleChange(title)}
-                                filteredTimelineListChangeCallback={(tidslinjerList) => this.filteredTimelineListChange(tidslinjerList)}></CommentSearchInfo>
-
+                                selectStartChangeCallback={this.selectStartChange}
+                                selectEndChangeCallback={this.selectEndChange}
+                                selectedTextChangeCallback={this.selectedTextChange}
+                                commandTidslinjeWrapperChangeCallback={this.commandTidslinjeWrapperChange}
+                                tidslinjerListChangeCallback={this.tidslinjerListChange}
+                                titleListChangeCallback={this.titleListChange}
+                                titleChangeCallback={this.titleChange(title)}
+                                filteredTimelineListChangeCallback={this.filteredTimelineListChange}>
                             <CommentSchema
 
                                 selectStart={this.state.selectStart}
@@ -158,14 +158,15 @@ export default class Comment extends React.Component {
                                 title={this.state.title}
                                 filteredTimeline={this.state.filteredTimeline}
 
-                                selectStartChangeCallback={(selectStart) => this.selectStartChange(selectStart)}
-                                selectEndChangeCallback={(selectedEnd) => this.selectEndChange(selectedEnd)}
-                                selectedTextChangeCallback={(selectedText) => this.selectedTextChange(selectedText)}
-                                commandTidslinjeWrapperChangeCallback={(commandTidslinjeWrapper) => this.commandTidslinjeWrapperChange(commandTidslinjeWrapper)}
-                                tidslinjerListChangeCallback={(tidslinjerList) => this.tidslinjerListChange(tidslinjerList)}
-                                titleListChangeCallback={(titleList) => this.titleListChange(titleList)}
-                                titleChangeCallback={(title) => this.titleChange(title)}
-                                filteredTimelineListChangeCallback={(tidslinjerList) => this.filteredTimelineListChange(tidslinjerList)}></CommentSchema>
+                                selectStartChangeCallback={this.selectStartChange}
+                                selectEndChangeCallback={this.selectEndChange}
+                                selectedTextChangeCallback={this.selectedTextChange}
+                                commandTidslinjeWrapperChangeCallback={this.commandTidslinjeWrapperChange}
+                                tidslinjerListChangeCallback={this.tidslinjerListChange}
+                                titleListChangeCallback={this.titleListChange}
+                                titleChangeCallback={this.titleChange(title)}
+                                filteredTimelineListChangeCallback={this.filteredTimelineListChange}>
+                            </CommentSchema>
                         </div>
 
                         <CommentList
@@ -179,14 +180,16 @@ export default class Comment extends React.Component {
                             title={this.state.title}
                             filteredTimeline={this.state.filteredTimeline}
 
-                            selectStartChangeCallback={(selectStart) => this.selectStartChange(selectStart)}
-                            selectEndChangeCallback={(selectedEnd) => this.selectEndChange(selectedEnd)}
-                            selectedTextChangeCallback={(selectedText) => this.selectedTextChange(selectedText)}
-                            commandTidslinjeWrapperChangeCallback={(commandTidslinjeWrapper) => this.commandTidslinjeWrapperChange(commandTidslinjeWrapper)}
-                            tidslinjerListChangeCallback={(tidslinjerList) => this.tidslinjerListChange(tidslinjerList)}
-                            titleListChangeCallback={(titleList) => this.titleListChange(titleList)}
-                            titleChangeCallback={(title) => this.titleChange(title)}
-                            filteredTimelineListChangeCallback={(tidslinjerList) => this.filteredTimelineListChange(tidslinjerList)}></CommentList>
+                        selectStartChangeCallback={this.selectStartChange}
+                        selectEndChangeCallback={this.selectEndChange}
+                        selectedTextChangeCallback={this.selectedTextChange}
+                        commandTidslinjeWrapperChangeCallback={this.commandTidslinjeWrapperChange}
+                        tidslinjerListChangeCallback={this.tidslinjerListChange}
+                        titleListChangeCallback={this.titleListChange}
+                        titleChangeCallback={this.titleChange(title)}
+                        filteredTimelineListChangeCallback={this.filteredTimelineListChange}>
+
+                    </CommentList>
                     </div>
                 </main>
             </Fragment>

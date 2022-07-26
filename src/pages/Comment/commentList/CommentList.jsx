@@ -57,62 +57,45 @@ export default class CommentList extends React.Component {
         this.setState({ show: false });
     }
     selectStartChange = (selectStart) => {
-        this.setState(selectStart, () => {
-            this.props.selectStartChangeCallback(this.state.selectStart);
-        });
+        this.props.selectStartChangeCallback(selectStart)
 
 
     }
 
 
     selectEndChange = (selectedEnd) => {
-        this.setState(selectedEnd, () => {
-            this.props.selectedEndChangeCallback(this.state.selectedEnd);
-        });
-
+        this.props.selectedEndChangeCallback(selectedEnd)
     }
 
 
 
     selectedTextChange = (selectedText) => {
-        this.setState(selectedText, () => {
-            this.props.selectedTextCallback(this.state.selectedText);
-        });
+        this.props.selectedTextChangeCallback(selectedText)
     }
 
     commandTidslinjeWrapperChange = (commandTidslinjeWrapper) => {
-        this.setState(commandTidslinjeWrapper, () => {
-            this.props.commandTidslinjeWrapperCallback(this.state.commandTidslinjeWrapper);
-        });
+        this.props.commandTidslinjeWrapperCallback(commandTidslinjeWrapper)
     }
 
     tidslinjerListChange = (tidslinjerList) => {
-        this.setState(tidslinjerList, () => {
-            this.props.tidslinjerListCallback(this.state.tidslinjerList);
-        });
+        this.props.tidslinjerListCallback(tidslinjerList)
     }
 
 
     titleListChange = (titleList) => {
-        this.setState(titleList, () => {
-            this.props.titleListCallback(this.state.titleList);
-        });
+        this.props.titleListCallback(titleList)
     }
 
 
 
     titleChange = (title) => {
-        this.setState(title, () => {
-            this.props.titleCallback(this.state.title);
-        });
+        this.props.titleCallback(title)
     }
 
 
 
     filteredTimelineListChange = (tidslinjerList) => {
-        this.setState(tidslinjerList, () => {
-            this.props.tidslinjerListCallback(this.state.tidslinjerList);
-        });
+        this.props.tidslinjerListCallback(tidslinjerList)
     }
     render() {
         return (
