@@ -11,7 +11,10 @@ import { BrowserRouter as Router, Routes, Route, MemoryRouter } from 'react-rout
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'font-awesome/css/font-awesome.min.css';
 export default class App extends React.Component {
+
+
     render() {
+       
         return (
             <Fragment>
 

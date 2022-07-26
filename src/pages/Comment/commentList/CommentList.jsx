@@ -17,11 +17,17 @@ export default class CommentList extends React.Component {
               title: "test",
               isdeleted: false
             },
-            filteredtimelines: [{ id: 2, user: "tre",text:"tekotiee" }, {id:5,user:"tt",text:"jfjejej"}],
+            filteredtimelines: [{ id: 2, user: "tre",  like: false, text: "tekotiee"}, { id: 5, user: "tt", text: "jfjejej", like: true }],
             highlightetcommentstart: 10,
             highlightetcommentend: 0,
             show: false,
-            currentId: -1
+            toChange: {
+                id: -1,
+                user: "",
+                text: "tester",
+                like: false,
+                dislike: false
+            }
 
 
         };
@@ -32,9 +38,20 @@ export default class CommentList extends React.Component {
         this.setState({ show: false });
     }
     open = (id, user, text, like, dislike, isdeleted) => () => {
-         this.setState({ show: true });
-         
+       
+        this.setState({
+            show: true,
+            toChange: {
+                id: id,
+                user: user,
+                text: text,
+                like: like,
+                dislike: dislike
+            } });
+      
+        
     }
+   
     render() {
         return (
             <Fragment>
@@ -69,9 +86,9 @@ export default class CommentList extends React.Component {
         <p> <strong>timestampCreated</strong>:{filteredtimeline.timestampCreated} </p>
         <p> <strong>timestampChanged</strong>:{filteredtimeline.timestampChanged}</p>
         <p><strong> text</strong>:  {filteredtimeline.text}</p>
-        <p> <strong>like</strong>: {filteredtimeline.like}</p>
-        <p> <strong>dislike</strong>: {filteredtimeline.dislike}  </p>
-        <p> <strong>deleted</strong>: {filteredtimeline.isdeleted}</p>
+        <p> <strong>like</strong>: {String(filteredtimeline.like)}</p>
+        <p> <strong>dislike</strong>: {String(filteredtimeline.dislike)}  </p>
+        <p> <strong>deleted</strong>: {String(filteredtimeline.isdeleted)}</p>
           <button type="button" onClick="highlightText(filteredtimeline.id)" class="btn btn-info col-2 m-1 p-1">Highlight commented text</button>
                                 <button type="button" onClick={this.open(filteredtimeline.id, filteredtimeline.user, filteredtimeline.text, filteredtimeline.like, filteredtimeline.dislike, filteredtimeline.isdeleted)} data-bs-toggle= "modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>
         <button type="button" onClick="removeById(filteredtimeline.id)" class="btn btn-danger col-1 m-1 p-1">Remove</button>
@@ -88,12 +105,12 @@ export default class CommentList extends React.Component {
                         <form >
                             <div class="form-group">
                                 <label for="commentUser"> User: </label>
-                                <input class="form-control input-sm w-50" id="commentUserChange" placeholder=" user" /><br />
+                                <input class="form-control input-sm w-50" id="commentUserChange" placeholder=" user" value={this.state.toChange.user} /><br />
 
                             </div>
                             <div class="form-group">
                                 <label for="commentComment"> Comment: </label>
-                                <textarea class="form-control input-sm w-50" id="commentCommentChange" placeholder="Comment" rows="10">
+                                <textarea class="form-control input-sm w-50" id="commentCommentChange" value={this.state.toChange.text} placeholder="Comment" rows="10">
                                 </textarea>
 
                             </div>
@@ -101,9 +118,9 @@ export default class CommentList extends React.Component {
                             <div class="form-group">
                                 <header> Do I like this part of text?</header>
                                 <div>
-                                    <label for="likeYes">Like:</label> <input value="like" type="radio" id="likeYesChange" name="likedislikeother" />  <br />
-                                    <label for="dislikeYes">Dislike:</label> <input value="dislike" type="radio" id="dislikeYesChange" name="likedislikeother" /><br />
-                                    <label for="likeDislikeNo">Don't know:</label>  <input value="dontknow" type="radio" id="likeDislikeNoChange" name="likedislikeother" checked />
+                                    <label for="likeYes">Like:</label> <input value="like" type="radio" checked={this.state.toChange.like} id="likeYesChange" name="likedislikeother" />  <br />
+                                    <label for="dislikeYes">Dislike:</label> <input value="dislike" checked={this.state.toChange.dislike} type="radio" id="dislikeYesChange" name="likedislikeother" /><br />
+                                    <label for="likeDislikeNo">Don't know:</label>  <input value="dontknow" checked={!this.state.toChange.dislike && !this.state.toChange.like} type="radio" id="likeDislikeNoChange" name="likedislikeother"  />
 
                                 </div>
                             </div>
