@@ -45,12 +45,7 @@ export default class CommentList extends React.Component {
     }
 
 
-    refresh() {
-        axios.post("")
-            .then(res => {
-              
-            })  
-    }
+
 
     changeTimeline(id, tidslinjeChangeForm) {
 

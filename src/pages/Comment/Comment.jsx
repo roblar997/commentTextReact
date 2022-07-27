@@ -56,6 +56,13 @@ export default class Comment extends React.Component {
         //      .then(res => {
         //     })  
     }
+
+    refresh() {
+        axios.post("")
+            .then(res => {
+
+            })
+    }
     doChange() {
 
     }
