@@ -44,6 +44,34 @@ export default class CommentList extends React.Component {
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
     }
 
+
+    refresh() {
+        axios.post("")
+            .then(res => {
+              
+            })  
+    }
+
+    changeTimeline(id, tidslinjeChangeForm) {
+
+        //Change timeline
+        axios.post("")
+            .then(res => {
+
+                //Get changes
+                axios.post("")
+                    .then(res2 => {
+
+                    })
+            });
+    }
+    removeById(id) {
+        axios.post("")
+            .then(res => {
+
+            });
+    }
+
     close = () => {
         this.setState({ show: false });
     }

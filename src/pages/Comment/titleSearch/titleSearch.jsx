@@ -66,9 +66,15 @@ export default class titelSearch extends React.Component {
 
     titleChange = (title) => () => {
         this.props.titleChangeCallback(title)
+ 
     }
 
+    loadText() {
+        axios.post("")
+            .then(res => {
 
+            })  
+    }
 
     filteredTimelineListChange = (tidslinjerList) => () => {
         this.props.tidslinjerListCallback(tidslinjerList)

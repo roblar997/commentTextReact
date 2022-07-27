@@ -11,6 +11,11 @@ export default class DeleteText extends React.Component {
 
         };
     }
+    deleteText() {
+        axios.post("")
+            .then(res => {
+            })  
+    }
     render() {
         return (
             <Fragment>

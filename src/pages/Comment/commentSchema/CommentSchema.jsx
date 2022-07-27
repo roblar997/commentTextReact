@@ -72,6 +72,20 @@ export default class commentSchema extends React.Component {
     filteredTimelineListChange = (tidslinjerList) => () => {
         this.props.tidslinjerListCallback(tidslinjerList)
     }
+
+    addNewComment() {
+        //Add timeline
+        axios.post("")
+            .then(res => {
+
+                //Get changes
+                axios.post("")
+                    .then(res2 => {
+
+                    })
+            });
+    }
+
     render() {
         return (
             <Fragment>

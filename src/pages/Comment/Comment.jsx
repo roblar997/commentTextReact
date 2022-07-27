@@ -3,6 +3,7 @@ import  CommentList  from "./commentList/CommentList.jsx"
 import  CommentSchema  from "./commentSchema/CommentSchema.jsx"
 import CommentSearchInfo from "./commentSearchInfo/CommentSearchInfo.jsx"
 import TitleSearch from "./titleSearch/titleSearch.jsx"
+import axios from 'axios';
 import React, { Fragment } from 'react'
 export default class Comment extends React.Component {
 
@@ -40,9 +41,7 @@ export default class Comment extends React.Component {
            this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
     }
 
-    componentDidMount() {
 
-    }
     selectStartChange = (selectStart) => {
         this.setState({
             selectStart: selectStart
@@ -51,6 +50,15 @@ export default class Comment extends React.Component {
 
     }
 
+    componentDidMount() {
+        // Load in list of titles
+        // axios.post("")
+        //      .then(res => {
+        //     })  
+    }
+    doChange() {
+
+    }
 
     selectEndChange = (selectedEnd) => {
         this.setState({
@@ -92,7 +100,12 @@ export default class Comment extends React.Component {
         this.setState({
             title: title
         });
+               //Get new title info
+        //axios.post("")
+        //    .then(res => {
+        //    })  
     }
+
 
 
 

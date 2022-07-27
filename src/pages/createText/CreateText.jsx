@@ -10,6 +10,12 @@ export default class CreateText extends React.Component {
 
         };
     }
+
+    addNewText() {
+              axios.post("")
+              .then(res => {
+             })  
+    }
     render() {
         return (
             <Fragment>
