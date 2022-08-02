@@ -21,8 +21,7 @@ export default class commentSearchInfo extends React.Component {
             selectEnd: 10,
             countingList: [],
             likes: 0,
-            dislikes: 0,
-            title: "toto"
+            dislikes: 0
 
 
         };
@@ -81,8 +80,8 @@ export default class commentSearchInfo extends React.Component {
                 <div>
                     <div class="form-group centered">
                         <p class="h3" style={{ marginTop: '10px' }} >Text to comment </p>
-                        {this.state.currentTitle && this.state.currentTitle.text && <textarea id="textToComment" onMouseUp="captureSelected()" style={{overflowY: 'auto', width:'320px', height:'320px', marginTop: '10px'}} readonly>{this.state.currentTitle.text}</textarea>}
-                        {!(this.state.currentTitle && this.state.currentTitle.text) && <textarea style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>
+                        {this.props.title && this.props.title.text && <textarea id="textToComment" onMouseUp="captureSelected()" style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>{this.props.title.text}</textarea>}
+                        {!(this.props.title && this.props.title.text) && <textarea style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>
                             Choose a title and press load text, to get it pasted in here
                         </textarea>}
 

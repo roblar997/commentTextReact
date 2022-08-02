@@ -27,7 +27,8 @@ export default class Comment extends React.Component {
             selectEnd: 10,
             selectedText: "",
             commandTidslinjeWrapper: [],
-            title:"sjoko"
+            title: "sjoko",
+            titleList: []
 
 
            };
@@ -39,6 +40,8 @@ export default class Comment extends React.Component {
            this.titleListChange = this.titleListChange.bind(this);
            this.titleChange = this.titleChange.bind(this);
            this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
+
+           this.state.titleList = ["twtw", "trett", "sjokolade", "TEST"]
     }
 
 
@@ -50,12 +53,6 @@ export default class Comment extends React.Component {
 
     }
 
-    componentDidMount() {
-        // Load in list of titles
-        // axios.post("")
-        //      .then(res => {
-        //     })  
-    }
 
     refresh() {
         axios.post("")
