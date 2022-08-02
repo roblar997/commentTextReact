@@ -71,9 +71,9 @@ export default class titelSearch extends React.Component {
 
 
 
-    titleChange = (title) => () => {
-        console.log(title);
-        this.props.titleChangeCallback(title)
+    titleChange = (title) => {
+        console.log(title.title + " tt")
+        this.props.titleChangeCallback(title.title)
         console.log(this.state.currentTitle)
     }
 
@@ -100,14 +100,15 @@ export default class titelSearch extends React.Component {
         this.state.selectedIndex = target.selectedIndex;
         this.state.currentSelected = target.value;
 
+
     }
     render() {
-        let currentSelected = this.state.currentSelected;
+
         return (
             <Fragment>
             <div>
                     <p class="h3" style={{ marginTop: '10px' }} >Text titles </p>   
-                    <select id="titleselectTitles" style={{ width: '150px', marginTop: '10px' }} value={currentSelected} onChange={(e) => this.changeCurrentSelected(e.target)} >
+                    <select id="titleselectTitles" style={{ width: '150px', marginTop: '10px' }} value={this.props.title.title} onChange={(e) => this.changeCurrentSelected(e.target)} >
                         {this.props.titleList.map((tittel, indexVal) => (<option value={tittel} >{tittel}</option>))}
                 </select>
 

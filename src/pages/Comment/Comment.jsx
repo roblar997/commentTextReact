@@ -27,7 +27,7 @@ export default class Comment extends React.Component {
             selectEnd: 10,
             selectedText: "",
             commandTidslinjeWrapper: [],
-            title: "sjoko",
+            title: "funker kun med tekst",
             titleList: []
 
 
@@ -101,6 +101,7 @@ export default class Comment extends React.Component {
 
 
     titleChange = (title) => {
+        console.log("tt" + title);
         this.setState({
             title: title
         });
