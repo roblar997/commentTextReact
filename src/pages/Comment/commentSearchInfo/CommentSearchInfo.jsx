@@ -38,6 +38,8 @@ export default class commentSearchInfo extends React.Component {
         this.filterListByTime = this.filterListByTime.bind(this);
         this.dislikesChange = this.dislikesChange.bind(this);
         this.likesChange = this.likesChange.bind(this);
+        this.countLikes = this.countLikes.bind(this);
+        this.countDisLikes = this.countDisLikes.bind(this);
       
     }
     selectStartChange = (selectStart)  => {
@@ -54,6 +56,12 @@ export default class commentSearchInfo extends React.Component {
         let filtered = this.filterListByTime(this.props.selectStart, this.props.selectEnd, this.state.percent);
         console.log(filtered);
         this.filteredTimelineListChange(filtered)
+
+        let likes = this.countLikes(this.props.selectStart, this.props.selectEnd, this.state.percent);
+        let dislikes = this.countDisLikes(this.props.selectStart, this.props.selectEnd, this.state.percent);
+
+        this.likesChange(likes);
+        this.dislikesChange(dislikes);
 
     }
     selectEndChange = (selectedEnd) => {
@@ -87,6 +95,11 @@ export default class commentSearchInfo extends React.Component {
         let filtered = this.filterListByTime(this.props.selectStart, this.props.selectEnd, this.state.percent);
         console.log(filtered);
         this.filteredTimelineListChange(filtered)
+        let likes = this.countLikes(this.props.selectStart, this.props.selectEnd, this.state.percent);
+        let dislikes = this.countDisLikes(this.props.selectStart, this.props.selectEnd, this.state.percent);
+
+        this.likesChange(likes);
+        this.dislikesChange(dislikes);
         
     }
 
@@ -112,6 +125,22 @@ export default class commentSearchInfo extends React.Component {
 
     }
 
+    countLikes = (start, end, percent) => {
+        let timeLinesFilteredTime = this.filterListByTime(start, end, percent);
+        return timeLinesFilteredTime.reduce((nmbLikes, timeline) => {
+            if (timeline.like) return nmbLikes + 1;
+            else return nmbLikes;
+        }, 0.0)
+    }
+
+
+    countDisLikes = (start, end, percent) => {
+        let timeLinesFilteredTime = this.filterListByTime(start, end, percent);
+        return timeLinesFilteredTime.reduce((nmbDisLike, timeline) => {
+            if (timeline.dislike) return nmbDisLike + 1;
+            else return nmbDisLike;
+        }, 0.0)
+    }
     filteredTimelineListChange = (filteredList)  => {
         this.props.filteredTimelineListChangeCallback(filteredList)
     }
@@ -135,12 +164,12 @@ export default class commentSearchInfo extends React.Component {
                     </label>
                     <input class="form-control input-sm w-25 " type="number" value={this.state.percent}  onChange={(e)=>this.percentChange(e.target)} id="percentEle" />
                     <p>
-                        <label for="likes">Likes <i class="fa fa-thumbs-up" aria-hidden="true"><strong> {this.state.likes} </strong></i></label>
+                        <label for="likes">Likes <i class="fa fa-thumbs-up" aria-hidden="true"><strong> {this.props.likes} </strong></i></label>
 
                         <input type="text" id="likes" readonly style={{ border: 0, color: 'black', fontWeight: 'bold' }} />
                     </p>
                     <p>
-                        <label for="dislikes">Dislikes <i class="fa fa-thumbs-down" aria-hidden="true"><strong> {this.state.dislikes} </strong> </i></label>
+                        <label for="dislikes">Dislikes <i class="fa fa-thumbs-down" aria-hidden="true"><strong> {this.props.dislikes} </strong> </i></label>
 
                         <input type="text" id="dislikes" readonly style={{border:0, color:'black', fontWeight:'bold'}}/>
                     </p>
