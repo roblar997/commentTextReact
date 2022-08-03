@@ -70,6 +70,7 @@ export default class Comment extends React.Component {
     }
 
     selectEndChange = (selectedEnd) => {
+        console.log(selectedEnd)
         this.setState({
             selectEnd: selectedEnd
         });
@@ -136,7 +137,7 @@ export default class Comment extends React.Component {
                         <div>
                             <TitleSearch
                                 selectStart={this.state.selectStart}
-                                selectEnd={this.state.selectedEnd}
+                                selectEnd={this.state.selectEnd}
                                 selectText={this.state.selectedText}
                                 commandTidslinjeWrapper={this.state.commandTidslinjeWrapper}
                                 tidslinjerList={this.state.tidslinjerList}
@@ -155,7 +156,7 @@ export default class Comment extends React.Component {
                             ></TitleSearch>
                             <CommentSearchInfo
                                 selectStart={this.state.selectStart}
-                                selectEnd={this.state.selectedEnd}
+                                selectEnd={this.state.selectEnd}
                                 selectText={this.state.selectedText}
                                 commandTidslinjeWrapper={this.state.commandTidslinjeWrapper}
                                 tidslinjerList={this.state.tidslinjerList}
@@ -175,7 +176,7 @@ export default class Comment extends React.Component {
                             <CommentSchema
 
                                 selectStart={this.state.selectStart}
-                                selectEnd={this.state.selectedEnd}
+                                selectEnd={this.state.selectEnd}
                                 selectText={this.state.selectedText}
                                 commandTidslinjeWrapper={this.state.commandTidslinjeWrapper}
                                 tidslinjerList={this.state.tidslinjerList}
@@ -197,7 +198,7 @@ export default class Comment extends React.Component {
                         <CommentList
 
                             selectStart={this.state.selectStart}
-                            selectEnd={this.state.selectedEnd}
+                            selectEnd={this.state.selectEnd}
                             selectText={this.state.selectedText}
                             commandTidslinjeWrapper={this.state.commandTidslinjeWrapper}
                             tidslinjerList={this.state.tidslinjerList}

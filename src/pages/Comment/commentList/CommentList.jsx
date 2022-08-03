@@ -138,9 +138,9 @@ export default class CommentList extends React.Component {
     <p class="h3">Comments       <i onClick="refresh()" class="fa fa-refresh m-1" id="refreshComments"></i></p>
                     <p class="h3" style={{ marginTop: '10px' }}>Is a comment of following </p>
                     {this.state.ishighlighting && <div id="commentHighlight" style={{ overflowY: 'auto', width: '320px', height: '220px', marginTop: '10px' }} readonly> 
-                        <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(0, this.state.highlightetcommentstart)}</span>
-                        <span style={{ backgroundColor: 'lightskyblue', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.state.highlightetcommentstart, this.state.highlightetcommentend)}</span>
-                        <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.state.highlightetcommentend, JSON.parse(this.props.title).text.length)}</span>
+                        <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(0, this.props.selectStart)}</span>
+                        <span style={{ backgroundColor: 'lightskyblue', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.props.selectStart, this.props.selectEnd)}</span>
+                        <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.props.selectEnd, JSON.parse(this.props.title).text.length)}</span>
                        </div>
     }
     

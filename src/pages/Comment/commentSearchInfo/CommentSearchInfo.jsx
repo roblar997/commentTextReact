@@ -32,16 +32,24 @@ export default class commentSearchInfo extends React.Component {
         this.titleListChange = this.titleChange.bind(this);
         this.titleChange = this.titleChange.bind(this);
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
+        this.captureSelected = this.captureSelected.bind(this);
     }
-    selectStartChange = (selectStart) => () => {
+    selectStartChange = (selectStart)  => {
+
         this.props.selectStartChangeCallback(selectStart)
 
 
     }
 
+    captureSelected = (target) =>{
 
-    selectEndChange = (selectedEnd) => () => {
-        this.props.selectedEndChangeCallback(selectedEnd)
+        this.selectStartChange(target.selectionStart);
+        this.selectEndChange(target.selectionEnd);
+
+    }
+    selectEndChange = (selectedEnd) => {
+
+        this.props.selectEndChangeCallback(selectedEnd)
     }
 
 
@@ -81,7 +89,7 @@ export default class commentSearchInfo extends React.Component {
                 <div>
                     <div class="form-group centered">
                         <p class="h3" style={{ marginTop: '10px' }} >Text to comment </p>
-                        {JSON.parse(this.props.title).title &&  JSON.parse(this.props.title).text && <textarea id="textToComment" onMouseUp="captureSelected()" style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} value={JSON.parse(this.props.title).text}></textarea> }}
+                        {JSON.parse(this.props.title).title && JSON.parse(this.props.title).text && <textarea id="textToComment" onMouseUp={(e)=>this.captureSelected(e.target)} style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} value={JSON.parse(this.props.title).text}></textarea> }}
                         {!(JSON.parse(this.props.title).title && JSON.parse(this.props.title).text) && <textarea style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>
                             Choose a title and press load text, to get it pasted in here
                         </textarea>}
