@@ -125,7 +125,7 @@ export default class CommentList extends React.Component {
 
 
 
-    filteredTimelineListChange = (tidslinjerList) => () => {
+    filteredTimelineListChange = (filteredTimelineListChange) => () => {
         this.props.tidslinjerListCallback(tidslinjerList)
     }
 
@@ -145,7 +145,7 @@ export default class CommentList extends React.Component {
     }
     
     <div id="comments" class="container"></div>
-                    {this.state.filteredtimelines.map((filteredtimeline) => (
+                    {this.props.filteredtimelines.map((filteredtimeline) => (
                         <div class="card bg-outline-info text-dark  mt-5" id="{{filteredtimeline.user}}">
 
       <div class="card-body">

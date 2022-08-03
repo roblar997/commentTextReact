@@ -35,6 +35,7 @@ export default class commentSearchInfo extends React.Component {
         this.percentChange = this.percentChange.bind(this);
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
         this.captureSelected = this.captureSelected.bind(this);
+        this.filterListByTime = this.filterListByTime.bind(this)
       
     }
     selectStartChange = (selectStart)  => {
@@ -48,11 +49,15 @@ export default class commentSearchInfo extends React.Component {
 
         this.selectStartChange(target.selectionStart);
         this.selectEndChange(target.selectionEnd);
+        let filtered = this.filterListByTime(this.props.selectStart, this.props.selectEnd, this.state.percent);
+        console.log(filtered);
+        this.filteredTimelineListChange(filtered)
 
     }
     selectEndChange = (selectedEnd) => {
 
         this.props.selectEndChangeCallback(selectedEnd)
+
     }
 
 
@@ -77,8 +82,10 @@ export default class commentSearchInfo extends React.Component {
     percentChange = (target) => {
 
         this.setState({ percent: target.value })
- 
-   
+        let filtered = this.filterListByTime(this.props.selectStart, this.props.selectEnd, this.state.percent);
+        console.log(filtered);
+        this.filteredTimelineListChange(filtered)
+        
     }
 
     titleChange = (title) => () => {
@@ -86,10 +93,20 @@ export default class commentSearchInfo extends React.Component {
         this.props.titleChangeCallback(title)
     }
 
-    
+    filterListByTime = (start, end, percent) => {
+        console.log(start+ " " + end)
+        return this.props.tidslinjerList.filter((x) => {
+     
+            if (x.start && x.end)
+                return x.start >= start && x.end <= end && ((x.start - x.end) / (start - end)) * 100 >= percent;
+            else
+                return false;
+        })
 
-    filteredTimelineListChange = (tidslinjerList) => () => {
-        this.props.tidslinjerListCallback(tidslinjerList)
+    }
+
+    filteredTimelineListChange = (filteredList)  => {
+        this.props.filteredTimelineListChangeCallback(filteredList)
     }
     render() {
         return (
