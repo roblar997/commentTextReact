@@ -82,7 +82,7 @@ export default class commentSearchInfo extends React.Component {
                     <div class="form-group centered">
                         <p class="h3" style={{ marginTop: '10px' }} >Text to comment </p>
                         {JSON.parse(this.props.title).title}
-                        {JSON.parse(this.props.title).title && JSON.parse(this.props.title).text && <textarea id="textToComment" onMouseUp="captureSelected()" style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>{JSON.parse(this.props.title).text}</textarea>}
+                        {JSON.parse(this.props.title).title && JSON.parse(this.props.title).text && <textarea id="textToComment" onMouseUp="captureSelected()" style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} value={JSON.parse(this.props.title).text}></textarea>}
                         {!(JSON.parse(this.props.title).title && JSON.parse(this.props.title).text) && <textarea style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>
                             Choose a title and press load text, to get it pasted in here
                         </textarea>}
