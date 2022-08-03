@@ -19,8 +19,8 @@ export default class CommentList extends React.Component {
               isdeleted: false
             },
             filteredtimelines: [{ id: 2, user: "tre",  like: false, text: "tekotiee"}, { id: 5, user: "tt", text: "jfjejej", like: true }],
-            highlightetcommentstart: 10,
-            highlightetcommentend: 0,
+            highlightetcommentstart: 0,
+            highlightetcommentend: 10,
             show: false,
             toChange: {
                 id: -1,
@@ -45,8 +45,15 @@ export default class CommentList extends React.Component {
         this.dislikesChange = this.dislikesChange.bind(this);
         this.likesChange = this.likesChange.bind(this);
         this.doChange = this.doChange.bind(this);
+        this.changehighlightetcomment = this.changehighlightetcomment.bind(this);
     }
 
+
+    changehighlightetcomment = (highlightetcommentstart, highlightetcommentend) => () => {
+        this.setState({ highlightetcommentstart: highlightetcommentstart });
+        this.setState({ highlightetcommentend: highlightetcommentend });
+       
+    }
 
 
 
@@ -149,9 +156,9 @@ export default class CommentList extends React.Component {
     <p class="h3">Comments       <i onClick="refresh()" class="fa fa-refresh m-1" id="refreshComments"></i></p>
                     <p class="h3" style={{ marginTop: '10px' }}>Is a comment of following </p>
                     {this.state.ishighlighting && <div id="commentHighlight" style={{ overflowY: 'auto', width: '320px', height: '220px', marginTop: '10px' }} readonly> 
-                        <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(0, this.props.selectStart)}</span>
-                        <span style={{ backgroundColor: 'lightskyblue', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.props.selectStart, this.props.selectEnd)}</span>
-                        <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.props.selectEnd, JSON.parse(this.props.title).text.length)}</span>
+                        <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(0, this.state.highlightetcommentstart)}</span>
+                        <span style={{ backgroundColor: 'lightskyblue', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.state.highlightetcommentstart, this.state.highlightetcommentend)}</span>
+                        <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.state.highlightetcommentend, JSON.parse(this.props.title).text.length)}</span>
                        </div>
     }
     
@@ -177,7 +184,7 @@ export default class CommentList extends React.Component {
         <p> <strong>like</strong>: {String(filteredtimeline.like)}</p>
         <p> <strong>dislike</strong>: {String(filteredtimeline.dislike)}  </p>
         <p> <strong>deleted</strong>: {String(filteredtimeline.isdeleted)}</p>
-                                <button type="button" onClick={this.titleChange("ttta")} class="btn btn-info col-2 m-1 p-1">Highlight commented text</button>
+                            <button type="button" onClick={this.changehighlightetcomment(Number(filteredtimeline.start), Number(filteredtimeline.end))} class="btn btn-info col-2 m-1 p-1">Highlight commented text</button>
                                 <button type="button" onClick={this.open(filteredtimeline.id, filteredtimeline.user, filteredtimeline.text, filteredtimeline.like, filteredtimeline.dislike, filteredtimeline.isdeleted)} data-bs-toggle= "modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>
         <button type="button" onClick="removeById(filteredtimeline.id)" class="btn btn-danger col-1 m-1 p-1">Remove</button>
 
