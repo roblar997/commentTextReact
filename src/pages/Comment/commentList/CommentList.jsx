@@ -153,7 +153,7 @@ export default class CommentList extends React.Component {
                 {filteredtimeline && filteredtimeline.start
                     && filteredtimeline.end
                     && <p style={{ width: '50%', backgroundColor: 'lightskyblue' }} >
-                                        <strong>Commenting</strong>: {JSON.parse(this.props.title).substring(filteredtimeline.start, filteredtimeline.end)}
+                                        <strong>Commenting</strong>: {JSON.parse(this.props.title).text.substring(filteredtimeline.start, filteredtimeline.end)}
                               </p>
         }
         <p>

@@ -96,8 +96,8 @@ export default class commentSearchInfo extends React.Component {
     filterListByTime = (start, end, percent) => {
         console.log(start+ " " + end)
         return this.props.tidslinjerList.filter((x) => {
-     
-            if (x.start && x.end)
+
+            if (x.start != undefined && x.end != undefined)
                 return x.start >= start && x.end <= end && ((x.start - x.end) / (start - end)) * 100 >= percent;
             else
                 return false;
