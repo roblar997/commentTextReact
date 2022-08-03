@@ -93,9 +93,9 @@ export default class commentSchema extends React.Component {
 
 
                 <div id="isCommenting" style={{ overflowY: 'auto', width: '320px', height: '220px', marginTop: '10px' }} readonly>
-                    <span style={{ backgroundColor: 'white', color: 'black' }} >{this.state.currentTitle.text.substring(0, this.state.selectStart) }</span>
-                    <span style={{ backgroundColor: 'lightskyblue', color: 'black' }}>{this.state.currentTitle.text.substring(this.state.selectStart, this.state.selectEnd) }</span>
-                    <span style={{ backgroundColor: 'white', color: 'black' }}>{this.state.currentTitle.text.substring(this.state.selectEnd, this.state.currentTitle.text.length) }</span>
+                    <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(0, this.state.selectStart) }</span>
+                    <span style={{ backgroundColor: 'lightskyblue', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.state.selectStart, this.state.selectEnd) }</span>
+                    <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.state.selectEnd, JSON.parse(this.props.title).text.length) }</span>
                 </div>
                 <p class="h3" style={{ marginTop: '10px' }} >Create a comment </p>
                 <section id="kommentar">

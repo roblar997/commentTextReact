@@ -138,9 +138,9 @@ export default class CommentList extends React.Component {
     <p class="h3">Comments       <i onClick="refresh()" class="fa fa-refresh m-1" id="refreshComments"></i></p>
                     <p class="h3" style={{ marginTop: '10px' }}>Is a comment of following </p>
                     {this.state.ishighlighting && <div id="commentHighlight" style={{ overflowY: 'auto', width: '320px', height: '220px', marginTop: '10px' }} readonly> 
-                        <span style={{ backgroundColor: 'white', color: 'black' }} >{this.state.currentTitle.text.substring(0, this.state.highlightetcommentstart)}</span>
-                        <span style={{ backgroundColor: 'lightskyblue', color: 'black' }}>{this.state.currentTitle.text.substring(this.state.highlightetcommentstart, this.state.highlightetcommentend)}</span>
-                        <span style={{ backgroundColor: 'white', color: 'black' }} >{this.state.currentTitle.text.substring(this.state.highlightetcommentend, this.state.currentTitle.text.length)}</span>
+                        <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(0, this.state.highlightetcommentstart)}</span>
+                        <span style={{ backgroundColor: 'lightskyblue', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.state.highlightetcommentstart, this.state.highlightetcommentend)}</span>
+                        <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(this.state.highlightetcommentend, JSON.parse(this.props.title).text.length)}</span>
                        </div>
     }
     
@@ -153,13 +153,13 @@ export default class CommentList extends React.Component {
                 {filteredtimeline && filteredtimeline.start
                     && filteredtimeline.end
                     && <p style={{ width: '50%', backgroundColor: 'lightskyblue' }} >
-                        <strong>Commenting</strong>: {this.state.currentTitle.text.substring(this.state.filteredtimeline.start, this.state.filteredtimeline.end)}
+                                        <strong>Commenting</strong>: {JSON.parse(this.props.title).substring(filteredtimeline.start, filteredtimeline.end)}
                               </p>
         }
         <p>
           <strong>id</strong>: {filteredtimeline.id }
         </p>
-        <p><strong>user</strong>: {this.props.title}</p>
+         <p><strong>user</strong>: {filteredtimeline.user}</p>
         <p> <strong>timestampCreated</strong>:{filteredtimeline.timestampCreated} </p>
         <p> <strong>timestampChanged</strong>:{filteredtimeline.timestampChanged}</p>
         <p><strong> text</strong>:  {filteredtimeline.text}</p>

@@ -81,7 +81,7 @@ export default class commentSearchInfo extends React.Component {
                 <div>
                     <div class="form-group centered">
                         <p class="h3" style={{ marginTop: '10px' }} >Text to comment </p>
-                        {JSON.parse(this.props.title).title && JSON.parse(this.props.title).text && <textarea id="textToComment" onMouseUp="captureSelected()" style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} value={JSON.parse(this.props.title).text}></textarea>}
+                        {JSON.parse(this.props.title).title &&  JSON.parse(this.props.title).text && <textarea id="textToComment" onMouseUp="captureSelected()" style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} value={JSON.parse(this.props.title).text}></textarea> }}
                         {!(JSON.parse(this.props.title).title && JSON.parse(this.props.title).text) && <textarea style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>
                             Choose a title and press load text, to get it pasted in here
                         </textarea>}
@@ -110,14 +110,14 @@ export default class commentSearchInfo extends React.Component {
                         <div id="textDensityMap" style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>
 
 
-                            {value.valueOf() >= 32 && <span style={{ backgroundColor: 'red' }} >{this.state.currentTitle.text[indexVal]}</span>}
-                            {value.valueOf() >= 16 && value.valueOf() < 32 && <span style={{ backgroundColor: 'yellow' }} >{this.state.currentTitle.text[indexVal]}</span>}
-                            {value.valueOf() >= 8 && value.valueOf() < 16 && <span style={{ backgroundColor: 'lightyellow' }} >{this.state.currentTitle.text[indexVal]}</span>}
-                            {value.valueOf() >= 4 && value.valueOf() < 8 && <span style={{ backgroundColor: 'green' }} >{this.state.currentTitle.text[indexVal]}</span>}
+                            {value.valueOf() >= 32 && <span style={{ backgroundColor: 'red' }} value={JSON.parse(this.props.title).text[indexVal] }></span>}
+                            {value.valueOf() >= 16 && value.valueOf() < 32 && <span style={{ backgroundColor: 'yellow' }} >{JSON.parse(this.props.title).text[indexVal]}</span>}
+                            {value.valueOf() >= 8 && value.valueOf() < 16 && <span style={{ backgroundColor: 'lightyellow' }} >{JSON.parse(this.props.title).text[indexVal]}</span>}
+                            {value.valueOf() >= 4 && value.valueOf() < 8 && <span style={{ backgroundColor: 'green' }} >{JSON.parse(this.props.title).text[indexVal]}</span>}
                     
-                            {value.valueOf() >= 2 && value.valueOf() < 4 && <span style={{ backgroundColor: 'lightgreen' }} > {this.state.currentTitle.text[indexVal]}</span>}
-                            {value.valueOf() >= 1 && value.valueOf() < 2 && <span style={{ backgroundColor: 'lightskyblue' }} > {this.state.currentTitle.text[indexVal]}</span >}
-                            {value.valueOf() == 0 && <span style={{ backgroundColor: 'white' }} > {this.state.currentTitle.text[indexVal]}</span >}
+                            {value.valueOf() >= 2 && value.valueOf() < 4 && <span style={{ backgroundColor: 'lightgreen' }}>{JSON.parse(this.props.title).text[indexVal]}</span>}
+                            {value.valueOf() >= 1 && value.valueOf() < 2 && <span style={{ backgroundColor: 'lightskyblue' }}>{JSON.parse(this.props.title).text[indexVal]}</span >}
+                            {value.valueOf() == 0 && <span style={{ backgroundColor: 'white' }}>{JSON.parse(this.props.title).text[indexVal]}</span >}
 
                         </div >      </span >))} 
 
