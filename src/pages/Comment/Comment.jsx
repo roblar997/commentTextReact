@@ -44,7 +44,7 @@ export default class Comment extends React.Component {
            this.selectStartChange = this.selectStartChange.bind(this);
            this.selectEndChange = this.selectEndChange.bind(this);
            this.selectedTextChange = this.selectedTextChange.bind(this);
-           this.commandTidslinjeWrapperChange = this.commandTidslinjeWrapperChange.bind(this);
+
            this.tidslinjerListChange = this.tidslinjerListChange.bind(this);
            this.titleListChange = this.titleListChange.bind(this);
            this.titleChange = this.titleChange.bind(this);
@@ -52,6 +52,7 @@ export default class Comment extends React.Component {
            this.dislikesChange = this.dislikesChange.bind(this);
            this.likesChange = this.likesChange.bind(this);
 
+           this.doChange = this.doChange.bind(this);
            this.state.titleList = ["twtw", "trett", "sjokolade", "TEST"]
     }
 
@@ -63,18 +64,66 @@ export default class Comment extends React.Component {
         
 
     }
+    //Will make this a callback, and send it to childs.
+    doChange(commandTidslinjeWrapper) {
+        let nytidslinjeListe = JSON.parse(JSON.stringify(this.state.tidslinjerList));
+
+        commandTidslinjeWrapper.forEach((commandtidslinjen) => {
 
 
+            //  console.log("Got command " + commandtidslinjen.command + " with timeline:" + JSON.stringify(commandtidslinjen.tidslinje))
+            if (String(commandtidslinjen.command) == "ADD") {
+                console.log("Supposed to do changes to timelines here. ADD ")
+                let tidslinjen = JSON.parse(JSON.stringify(commandtidslinjen.tidslinje));
+                nytidslinjeListe.push(tidslinjen);
+                //if (commandtidslinjen.tidslinje && commandtidslinjen.tidslinje.start && commandtidslinjen.tidslinje.end)
+                    //this.currentFenwick.addTimeline(commandtidslinjen.tidslinje.start, commandtidslinjen.tidslinje.end)
+
+                //Notify change to parrent, such that everyone now that we have a new tidslinje
+
+
+            }
+            else if (String(commandtidslinjen.command) == "CHANGE") {
+
+                console.log("Supposed to do changes to timelines here. CHANGE ")
+                let index = nytidslinjeListe.findIndex((x) => { return x.id == commandtidslinjen.tidslinje.id})
+                nytidslinjeListe.splice(index, 1, commandtidslinjen.tidslinje)
+
+                // console.log("State of tidslinje array: " + JSON.stringify(this.tidslinjerList));
+
+            }
+            else if (String(commandtidslinjen.command) == "REMOVE") {
+                let index = nytidslinjeListe.findIndex((x) => { return x.id == commandtidslinjen.tidslinje.id })
+
+                nytidslinjeListe.splice(index, 1)
+                console.log("Supposed to do changes to timelines here. REMOVE ")
+                if (commandtidslinjen.tidslinje && commandtidslinjen.tidslinje.start && commandtidslinjen.tidslinje.end)
+                    this.currentFenwick.removeTimeline(commandtidslinjen.tidslinje.start, commandtidslinjen.tidslinje.end)
+
+
+
+            }
+
+        })
+        //change to a updated version
+        this.tidslinjerListChange(nytidslinjeListe);
+
+
+        //let nyFiltered: tidslinje[] = this.filterListByTime(this.selectStart.getValue().valueOf(), this.selectEnd.getValue().valueOf(), this.percent.getValue().valueOf());
+       // this.filteredtimelines.next(nyFiltered);
+
+       // let likes: Number = this.countLikes(this.selectStart.getValue().valueOf(), this.selectEnd.getValue().valueOf(), this.percent.getValue());
+       // let dislikes: Number = this.countDisLikes(this.selectStart.getValue().valueOf(), this.selectEnd.getValue().valueOf(), this.percent.getValue());
+        //this.changelikes(likes);
+       // this.changedislikes(dislikes);
+    }
     refresh() {
         axios.post("")
             .then(res => {
 
             })
     }
-    doChange() {
-
-    }
-
+ 
     selectEndChange = (selectedEnd) => {
         console.log(selectedEnd)
         this.setState({
@@ -154,7 +203,6 @@ export default class Comment extends React.Component {
                                 selectStart={this.state.selectStart}
                                 selectEnd={this.state.selectEnd}
                                 selectText={this.state.selectedText}
-                                commandTidslinjeWrapper={this.state.commandTidslinjeWrapper}
                                 tidslinjerList={this.state.tidslinjerList}
                                 titleList={this.state.titleList}
                                 title={this.state.title}
@@ -172,12 +220,12 @@ export default class Comment extends React.Component {
                                 titleListChangeCallback={this.titleListChange}
                                 titleChangeCallback={this.titleChange}
                                 filteredTimelineListChangeCallback={this.filteredTimelineListChange}
+                                doChangeCallback={this.doChange }
                             ></TitleSearch>
                             <CommentSearchInfo
                                 selectStart={this.state.selectStart}
                                 selectEnd={this.state.selectEnd}
                                 selectText={this.state.selectedText}
-                                commandTidslinjeWrapper={this.state.commandTidslinjeWrapper}
                                 tidslinjerList={this.state.tidslinjerList}
                                 titleList={this.state.titleList}
                                 title={this.state.title}
@@ -185,6 +233,7 @@ export default class Comment extends React.Component {
                                 likes={this.state.likes}
                                 dislikes={this.state.dislikes}
 
+                                doChangeCallback={this.doChange}
                                 likesChangeCallback={this.likesChange}
                                 dislikesChangeCallback={this.dislikesChange}
                                 selectStartChangeCallback={this.selectStartChange}
@@ -201,7 +250,6 @@ export default class Comment extends React.Component {
                                 selectStart={this.state.selectStart}
                                 selectEnd={this.state.selectEnd}
                                 selectText={this.state.selectedText}
-                                commandTidslinjeWrapper={this.state.commandTidslinjeWrapper}
                                 tidslinjerList={this.state.tidslinjerList}
                                 titleList={this.state.titleList}
                                 title={this.state.title}
@@ -209,6 +257,7 @@ export default class Comment extends React.Component {
                                 likes={this.state.likes}
                                 dislikes={this.state.dislikes}
 
+                                doChangeCallback={this.doChange}
                                 likesChangeCallback={this.likesChange}
                                 dislikesChangeCallback={this.dislikesChange}
                                 selectStartChangeCallback={this.selectStartChange}
@@ -227,7 +276,6 @@ export default class Comment extends React.Component {
                             selectStart={this.state.selectStart}
                             selectEnd={this.state.selectEnd}
                             selectText={this.state.selectedText}
-                            commandTidslinjeWrapper={this.state.commandTidslinjeWrapper}
                             tidslinjerList={this.state.tidslinjerList}
                             titleList={this.state.titleList}
                             title={this.state.title}
@@ -235,6 +283,7 @@ export default class Comment extends React.Component {
                             likes={this.state.likes}
                             dislikes={this.state.dislikes}
 
+                            doChangeCallback={this.doChange}
                             likesChangeCallback={this.likesChange}
                             dislikesChangeCallback={this.dislikesChange}
                         selectStartChangeCallback={this.selectStartChange}

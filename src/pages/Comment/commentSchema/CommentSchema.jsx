@@ -32,13 +32,16 @@ export default class commentSchema extends React.Component {
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
         this.dislikesChange = this.dislikesChange.bind(this);
         this.likesChange = this.likesChange.bind(this);
+        this.doChange = this.doChange.bind(this);
     }
     selectStartChange = (selectStart) => () => {
         this.props.selectStartChangeCallback(selectStart)
 
 
     }
-
+    doChange(commandTidslinjeWrapper) {
+        this.props.doChangeCallback(commandTidslinjeWrapper)
+    }
 
     selectEndChange = (selectedEnd) => () => {
         this.props.selectedEndChangeCallback(selectedEnd)

@@ -44,6 +44,7 @@ export default class CommentList extends React.Component {
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
         this.dislikesChange = this.dislikesChange.bind(this);
         this.likesChange = this.likesChange.bind(this);
+        this.doChange = this.doChange.bind(this);
     }
 
 
@@ -67,6 +68,9 @@ export default class CommentList extends React.Component {
             .then(res => {
 
             });
+    }
+    doChange(commandTidslinjeWrapper) {
+        this.props.doChangeCallback(commandTidslinjeWrapper)
     }
 
     close = () => {

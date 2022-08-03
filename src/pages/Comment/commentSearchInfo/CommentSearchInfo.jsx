@@ -40,6 +40,7 @@ export default class commentSearchInfo extends React.Component {
         this.likesChange = this.likesChange.bind(this);
         this.countLikes = this.countLikes.bind(this);
         this.countDisLikes = this.countDisLikes.bind(this);
+        this.doChange = this.doChange.bind(this);
       
     }
     selectStartChange = (selectStart)  => {
@@ -48,7 +49,9 @@ export default class commentSearchInfo extends React.Component {
 
 
     }
-
+    doChange(commandTidslinjeWrapper) {
+        this.props.doChangeCallback(commandTidslinjeWrapper)
+    }
     captureSelected = (target) =>{
 
         this.selectStartChange(target.selectionStart);

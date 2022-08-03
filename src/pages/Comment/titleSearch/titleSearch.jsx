@@ -39,6 +39,7 @@ export default class titelSearch extends React.Component {
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
         this.dislikesChange = this.dislikesChange.bind(this);
         this.likesChange = this.likesChange.bind(this);
+        this.doChange = this.doChange.bind(this);
     }
     componentDidMount() {
         this.state.currentSelected = this.props.titleList[this.state.selectedIndex];
@@ -48,7 +49,9 @@ export default class titelSearch extends React.Component {
 
 
     }
-
+    doChange(commandTidslinjeWrapper) {
+        this.props.doChangeCallback(commandTidslinjeWrapper)
+    }
     likesChange = (likes) => {
         this.props.likesChangeCallback(likes);
     }
