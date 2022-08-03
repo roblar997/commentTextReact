@@ -21,7 +21,8 @@ export default class commentSearchInfo extends React.Component {
             selectEnd: 10,
             countingList: [],
             likes: 0,
-            dislikes: 0
+            dislikes: 0,
+            percent:100
 
 
         };
@@ -31,8 +32,10 @@ export default class commentSearchInfo extends React.Component {
         this.tidslinjerListChange = this.titleChange.bind(this);
         this.titleListChange = this.titleChange.bind(this);
         this.titleChange = this.titleChange.bind(this);
+        this.percentChange = this.percentChange.bind(this);
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
         this.captureSelected = this.captureSelected.bind(this);
+      
     }
     selectStartChange = (selectStart)  => {
 
@@ -71,14 +74,19 @@ export default class commentSearchInfo extends React.Component {
         this.props.titleListCallback(titleList)
     }
 
+    percentChange = (target) => {
 
+        this.setState({ percent: target.value })
+ 
+   
+    }
 
     titleChange = (title) => () => {
   
         this.props.titleChangeCallback(title)
     }
 
-
+    
 
     filteredTimelineListChange = (tidslinjerList) => () => {
         this.props.tidslinjerListCallback(tidslinjerList)
@@ -101,7 +109,7 @@ export default class commentSearchInfo extends React.Component {
                         <strong>Percent(%) </strong>: Adjust this value to capture more comments inside.<br />
                         100% requires full match of comment. Lesser values capture smaller <br /> comments inside area
                     </label>
-                    <input class="form-control input-sm w-25 " type="number" onChange="percentChange()" id="percentEle" value="100" />
+                    <input class="form-control input-sm w-25 " type="number" value={this.state.percent}  onChange={(e)=>this.percentChange(e.target)} id="percentEle" />
                     <p>
                         <label for="likes">Likes <i class="fa fa-thumbs-up" aria-hidden="true"><strong> {this.state.likes} </strong></i></label>
 
