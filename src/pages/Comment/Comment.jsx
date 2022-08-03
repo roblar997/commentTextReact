@@ -27,7 +27,12 @@ export default class Comment extends React.Component {
             selectEnd: 10,
             selectedText: "",
             commandTidslinjeWrapper: [],
-            title: "funker kun med tekst",
+            title: JSON.stringify({
+                id: 1,
+                text: "",
+                title: "test",
+                isdeleted: false
+            }),
             titleList: []
 
 

@@ -26,6 +26,8 @@ export default class titelSearch extends React.Component {
 
 
         };
+
+      
         this.selectStartChange = this.selectStartChange.bind(this);
         this.selectEndChange = this.selectEndChange.bind(this);
         this.selectedTextChange = this.selectedTextChange.bind(this);
@@ -72,9 +74,9 @@ export default class titelSearch extends React.Component {
 
 
     titleChange = (title) => {
-        console.log(title.title + " tt")
-        this.props.titleChangeCallback(title.title)
-        console.log(this.state.currentTitle)
+
+        this.props.titleChangeCallback(JSON.stringify(title))
+
     }
 
     loadText() {
@@ -108,7 +110,7 @@ export default class titelSearch extends React.Component {
             <Fragment>
             <div>
                     <p class="h3" style={{ marginTop: '10px' }} >Text titles </p>   
-                    <select id="titleselectTitles" style={{ width: '150px', marginTop: '10px' }} value={this.props.title.title} onChange={(e) => this.changeCurrentSelected(e.target)} >
+                    <select id="titleselectTitles" style={{ width: '150px', marginTop: '10px' }} value={JSON.parse(this.props.title).title} onChange={(e) => this.changeCurrentSelected(e.target)} >
                         {this.props.titleList.map((tittel, indexVal) => (<option value={tittel} >{tittel}</option>))}
                 </select>
 
