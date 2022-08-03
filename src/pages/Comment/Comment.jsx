@@ -5,6 +5,86 @@ import CommentSearchInfo from "./commentSearchInfo/CommentSearchInfo.jsx"
 import TitleSearch from "./titleSearch/titleSearch.jsx"
 import axios from 'axios';
 import React, { Fragment } from 'react'
+
+export class FenwFeatureTree {
+    size;
+    tree= [];
+    constructor(size) {
+        this.size = size
+        this.tree = []
+        for (let i = 0; i < size; i++) {
+            this.tree[i] = 0
+        }
+    }
+
+    update(timeSlot, val) {
+        if (timeSlot == 0) return //must start at 1
+        while (timeSlot < this.size) {
+            this.tree[timeSlot] += val
+            timeSlot += timeSlot & (-timeSlot)
+        }
+    }
+
+
+
+     query(timeSlot) {
+
+            let returnVal = 0;
+
+            while (timeSlot > 0) {
+                returnVal += this.tree[timeSlot]
+                timeSlot -= timeSlot & (-timeSlot)
+            }
+         return returnVal;
+    }
+
+
+     rangeQuery(l, r) {
+        let ret = this.query(l - 1) - this.query(r)
+        return ret
+    }
+
+    addTimeline(start, end) {
+        //Inside, prefix sum adds 1 because it encounters slot=start
+        this.update(start, 1);
+
+        //When going outisde timeline (end+1), one add -1 to remember one dont longer
+        //have added +1 when encountered start.
+        // Only going to use prefix sum to count number of timelines that I am standing on, so
+        // no range query needed
+        //
+        //--OFF TOPIC---
+        //Range query gives then prefix sum to end - prefix sum to start:
+        //NB! not needed for this class
+        // (rangequery start inside timeline, rangequery end outside timeline): (1+(-1)) - 1 = -1
+        // (rangequery start inside timeline, rangequery end inside timeline):  (1+0) - 1 = 0
+        // (rangequery start outside timeline, rangequery end outside timeline):  (1+(-1)) - 0 = 0-0 =0
+        // (rangequery start outside timeline, rangequery end inside timeline):  (1+0) - 0 = 1-0 =1
+        //Because all timelines inside follow same logic, sum becomes 0.
+        this.update(end + 1, -1);
+
+    }
+    //Do reverse update compared to adding
+    removeTimeline(start, end) {
+        this.update(start, -1);
+        this.update(end + 1, 1);
+    }
+
+    getCountingList(start, stop) {
+        let res = []
+
+        for (let i = start; i <= stop; i++) {
+            res.push(this.query(i))
+        }
+        return res;
+    }
+
+
+
+
+
+}
+
 export default class Comment extends React.Component {
 
        constructor(props) {
