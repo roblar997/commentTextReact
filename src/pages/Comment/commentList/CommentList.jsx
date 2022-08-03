@@ -42,6 +42,8 @@ export default class CommentList extends React.Component {
         this.titleListChange = this.titleChange.bind(this);
         this.titleChange = this.titleChange.bind(this);
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
+        this.dislikesChange = this.dislikesChange.bind(this);
+        this.likesChange = this.likesChange.bind(this);
     }
 
 
@@ -92,7 +94,12 @@ export default class CommentList extends React.Component {
 
 
     }
-
+    likesChange = (likes) => {
+        this.props.likesChangeCallback(likes);
+    }
+    dislikesChange = (dislikes) => {
+        this.props.dislikesChangeCallback(dislikes);
+    }
 
     selectEndChange = (selectedEnd) => () => {
         this.props.selectedEndChangeCallback(selectedEnd)

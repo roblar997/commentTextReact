@@ -37,6 +37,8 @@ export default class titelSearch extends React.Component {
         this.changeCurrentSelected = this.changeCurrentSelected.bind(this);
         this.loadText = this.loadText.bind(this);
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
+        this.dislikesChange = this.dislikesChange.bind(this);
+        this.likesChange = this.likesChange.bind(this);
     }
     componentDidMount() {
         this.state.currentSelected = this.props.titleList[this.state.selectedIndex];
@@ -47,7 +49,12 @@ export default class titelSearch extends React.Component {
 
     }
 
-
+    likesChange = (likes) => {
+        this.props.likesChangeCallback(likes);
+    }
+    dislikesChange = (dislikes) => {
+        this.props.dislikesChangeCallback(dislikes);
+    }
     selectEndChange = (selectedEnd) => () => {
         this.props.selectedEndChangeCallback(selectedEnd)
     }

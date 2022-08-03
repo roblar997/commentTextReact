@@ -30,6 +30,8 @@ export default class commentSchema extends React.Component {
         this.titleListChange = this.titleChange.bind(this);
         this.titleChange = this.titleChange.bind(this);
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
+        this.dislikesChange = this.dislikesChange.bind(this);
+        this.likesChange = this.likesChange.bind(this);
     }
     selectStartChange = (selectStart) => () => {
         this.props.selectStartChangeCallback(selectStart)
@@ -42,7 +44,12 @@ export default class commentSchema extends React.Component {
         this.props.selectedEndChangeCallback(selectedEnd)
     }
 
-
+    likesChange = (likes) => {
+        this.props.likesChangeCallback(likes);
+    }
+    dislikesChange = (dislikes) => {
+        this.props.dislikesChangeCallback(dislikes);
+    }
 
     selectedTextChange = (selectedText) => () => {
         this.props.selectedTextChangeCallback(selectedText)

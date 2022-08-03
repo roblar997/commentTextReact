@@ -35,7 +35,9 @@ export default class Comment extends React.Component {
                 title: "test",
                 isdeleted: false
             }),
-            titleList: []
+            titleList: [],
+            likes: 0,
+            dislikes:0
 
 
            };
@@ -47,6 +49,8 @@ export default class Comment extends React.Component {
            this.titleListChange = this.titleListChange.bind(this);
            this.titleChange = this.titleChange.bind(this);
            this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
+           this.dislikesChange = this.dislikesChange.bind(this);
+           this.likesChange = this.likesChange.bind(this);
 
            this.state.titleList = ["twtw", "trett", "sjokolade", "TEST"]
     }
@@ -79,7 +83,16 @@ export default class Comment extends React.Component {
 
     }
 
-
+    likesChange = (likes) => {
+        this.setState({
+            likes: likes
+        });
+    }
+    dislikesChange = (dislikes) => {
+        this.setState({
+            dislikes: dislikes
+        });
+    }
 
     selectedTextChange = (selectedText) => {
         this.setState({
@@ -146,7 +159,11 @@ export default class Comment extends React.Component {
                                 titleList={this.state.titleList}
                                 title={this.state.title}
                                 filteredtimelines={this.state.filteredtimelines}
+                                likes={this.state.likes}
+                                dislikes={this.state.dislikes}
 
+                                likesChangeCallback={this.likesChange}
+                                dislikesChangeCallback={this.dislikesChange}
                                 selectStartChangeCallback={this.selectStartChange}
                                 selectEndChangeCallback={this.selectEndChange}
                                 selectedTextChangeCallback={this.selectedTextChange}
@@ -165,7 +182,11 @@ export default class Comment extends React.Component {
                                 titleList={this.state.titleList}
                                 title={this.state.title}
                                 filteredtimelines={this.state.filteredtimelines}
+                                likes={this.state.likes}
+                                dislikes={this.state.dislikes}
 
+                                likesChangeCallback={this.likesChange}
+                                dislikesChangeCallback={this.dislikesChange}
                                 selectStartChangeCallback={this.selectStartChange}
                                 selectEndChangeCallback={this.selectEndChange}
                                 selectedTextChangeCallback={this.selectedTextChange}
@@ -185,7 +206,11 @@ export default class Comment extends React.Component {
                                 titleList={this.state.titleList}
                                 title={this.state.title}
                                 filteredtimelines={this.state.filteredtimelines}
+                                likes={this.state.likes}
+                                dislikes={this.state.dislikes}
 
+                                likesChangeCallback={this.likesChange}
+                                dislikesChangeCallback={this.dislikesChange}
                                 selectStartChangeCallback={this.selectStartChange}
                                 selectEndChangeCallback={this.selectEndChange}
                                 selectedTextChangeCallback={this.selectedTextChange}
@@ -207,7 +232,11 @@ export default class Comment extends React.Component {
                             titleList={this.state.titleList}
                             title={this.state.title}
                             filteredtimelines={this.state.filteredtimelines}
+                            likes={this.state.likes}
+                            dislikes={this.state.dislikes}
 
+                            likesChangeCallback={this.likesChange}
+                            dislikesChangeCallback={this.dislikesChange}
                         selectStartChangeCallback={this.selectStartChange}
                         selectEndChangeCallback={this.selectEndChange}
                         selectedTextChangeCallback={this.selectedTextChange}

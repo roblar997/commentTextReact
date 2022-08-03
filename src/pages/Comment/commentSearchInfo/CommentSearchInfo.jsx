@@ -35,7 +35,9 @@ export default class commentSearchInfo extends React.Component {
         this.percentChange = this.percentChange.bind(this);
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
         this.captureSelected = this.captureSelected.bind(this);
-        this.filterListByTime = this.filterListByTime.bind(this)
+        this.filterListByTime = this.filterListByTime.bind(this);
+        this.dislikesChange = this.dislikesChange.bind(this);
+        this.likesChange = this.likesChange.bind(this);
       
     }
     selectStartChange = (selectStart)  => {
@@ -92,7 +94,12 @@ export default class commentSearchInfo extends React.Component {
   
         this.props.titleChangeCallback(title)
     }
-
+    likesChange = (likes) => {
+        this.props.likesChangeCallback(likes);
+    }
+    dislikesChange = (dislikes) => {
+        this.props.dislikesChangeCallback(dislikes);
+    }
     filterListByTime = (start, end, percent) => {
         console.log(start+ " " + end)
         return this.props.tidslinjerList.filter((x) => {
