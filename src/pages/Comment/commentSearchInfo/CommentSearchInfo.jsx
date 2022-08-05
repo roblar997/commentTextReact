@@ -177,16 +177,19 @@ export default class commentSearchInfo extends React.Component {
                         <input type="text" id="dislikes" readonly style={{border:0, color:'black', fontWeight:'bold'}}/>
                     </p>
                     <p class="h3" style={{ marginTop: '10px' }} >Color map of comment density </p>
+                    <div id="textDensityMap" style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>
+                    {this.props.countingList.map((value, indexVal) => (<span>
 
-                    {this.props.countingList.map((value, indexVal) => (
-<span id="textDensityMap" style={{ overflowY: 'auto', width: '320px', height: '320px', marginTop: '10px' }} readonly>
 {value.valueOf() >= 32 && <span style={{ backgroundColor: 'red' }} value={JSON.parse(this.props.title).text[indexVal] }></span>}
 {value.valueOf() >= 16 && value.valueOf() < 32 && <span style={{ backgroundColor: 'yellow' }} >{JSON.parse(this.props.title).text[indexVal]}</span>}
 {value.valueOf() >= 8 && value.valueOf() < 16 && <span style={{ backgroundColor: 'lightyellow' }} >{JSON.parse(this.props.title).text[indexVal]}</span>}
 {value.valueOf() >= 4 && value.valueOf() < 8 && <span style={{ backgroundColor: 'green' }} >{JSON.parse(this.props.title).text[indexVal]}</span>}
 {value.valueOf() >= 2 && value.valueOf() < 4 && <span style={{ backgroundColor: 'lightgreen' }}>{JSON.parse(this.props.title).text[indexVal]}</span>}
 {value.valueOf() >= 1 && value.valueOf() < 2 && <span style={{ backgroundColor: 'lightskyblue' }}>{JSON.parse(this.props.title).text[indexVal]}</span >}
-{value.valueOf() == 0 && <span style={{ backgroundColor: 'white' }}>{JSON.parse(this.props.title).text[indexVal]}</span >}</span >))} </div >
+{value.valueOf() == 0 && <span style={{ backgroundColor: 'white' }}>{JSON.parse(this.props.title).text[indexVal]}</span >}
+                    </span >))} </div >
+
+  </div >
             </Fragment>
         )
     }
