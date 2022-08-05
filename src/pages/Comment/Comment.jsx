@@ -260,6 +260,8 @@ export default class Comment extends React.Component {
 
     getChanges() {
         let testCommand = "REMOVE";
+        let testID = 1;
+        let testTidslinje = { "id": testID, "user": "RR", "timestampCreated": 1657545938272, "timestampChanged": 1657545938272, "start": 0, "end": 10, "text": "RRR", "like": true, "dislike": false, "isdeleted": false, "texttocommentid": 1 }
         let commandTidslinjeWrapper = [];
 
         if (testCommand == "REMOVE")
