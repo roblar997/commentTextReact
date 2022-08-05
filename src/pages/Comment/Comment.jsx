@@ -271,7 +271,8 @@ export default class Comment extends React.Component {
 
         else
             return;
-        this.state.timestamp = new Date().valueOf()
+
+        this.setState({ timestamp: new Date().valueOf() })
         this.doChange(commandTidslinjeWrapper)
     }
 
@@ -289,7 +290,7 @@ export default class Comment extends React.Component {
 
         let tidslinjerList = database.filter(x => x[0].texttocommentid == JSON.parse(title).id)[0]
 
-        this.state.timestamp = new Date().valueOf();
+        this.setState({ timestamp: new Date().valueOf() })
 
         //Load list of timelines
         this.tidslinjerListChange(tidslinjerList)
