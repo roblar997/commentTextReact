@@ -47,12 +47,14 @@ export default class CommentList extends React.Component {
         this.getChanges = this.getChanges.bind(this);
         this.changehighlightetcomment = this.changehighlightetcomment.bind(this);
         this.refresh = this.refresh.bind(this);
+        this.changeTimeline = this.changeTimeline.bind(this);
 
-        this.likeYesChange = React.createRef(null);
+        this.likeYesChangeRef = React.createRef(null);
         this.dislikeYesChangeRef = React.createRef(null);
         this.likeDislikeNoChangeRef = React.createRef(null);
         this.userChangeRef = React.createRef(null);
         this.textChangeRef = React.createRef(null);
+        this.idChangeRef = React.createRef(null);
     }
 
 
@@ -64,8 +66,22 @@ export default class CommentList extends React.Component {
 
 
 
-    changeTimeline(id, tidslinjeChangeForm) {
-        this.getChanges();
+    changeTimeline() {
+        let tidslinje = {
+            id: this.idChangeRef.current.value,
+            user: this.userChangeRef.current.value,
+            timestampCreated: 123, //Need change to get value
+            timestampChanged: new Date().valueOf(),
+            start: 1,//Need change to get value
+            end: 1,//Need change to get value
+            text: this.textChangeRef.current.value.trim(),
+            like: this.likeYesChangeRef.current.checked,
+            dislike: this.dislikeYesChangeRef.current.checked,
+            isdeleted: false,
+            texttocommentid: JSON.parse(this.props.title).id
+        }
+        console.log(this.userChangeRef.current.value)
+       // this.getChanges();
         //Change timeline
        // axios.post("")
         //    .then(res => {
@@ -154,6 +170,7 @@ export default class CommentList extends React.Component {
         this.props.tidslinjerListCallback(tidslinjerList)
     }
     refresh() {
+
         this.props.getChangesCallback();
     }
     render() {
@@ -206,7 +223,8 @@ export default class CommentList extends React.Component {
                         <ModalTitle>Change comment</ModalTitle>
                     </ModalHeader>
                     <ModalBody>
-                        <form >
+                        
+                            <input id="changeId" type="hidden" ref={this.idChangeRef} value={this.state.toChange.id}></input>
                             <div class="form-group">
                                 <label for="commentUser"> User: </label>
                                 <input class="form-control input-sm w-50" ref={this.userChangeRef} id="commentUserChange" placeholder=" user" value={this.state.toChange.user} /><br />
@@ -228,9 +246,9 @@ export default class CommentList extends React.Component {
 
                                 </div>
                             </div>
-                        </form></ModalBody>
+                  </ModalBody>
                     <ModalFooter>
-                        <button type="button" class="btn btn-success" onClick={this.doChange}>Change</button>
+                        <button type="button" class="btn btn-success" onClick={this.changeTimeline}>Change</button>
                         <button type="button" class="btn btn-secondary" onClick={this.close} >Close</button>
                     </ModalFooter>
                 </Modal>

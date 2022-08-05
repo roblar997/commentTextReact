@@ -33,6 +33,7 @@ export default class commentSchema extends React.Component {
         this.dislikesChange = this.dislikesChange.bind(this);
         this.likesChange = this.likesChange.bind(this);
         this.getChanges = this.getChanges.bind(this);
+        this.addNewComment = this.addNewComment.bind(this);
 
         this.likeYesRef = React.createRef(null);
         this.dislikeYesRef = React.createRef(null);
@@ -88,9 +89,22 @@ export default class commentSchema extends React.Component {
         this.props.tidslinjerListCallback(tidslinjerList)
     }
 
-    addNewComment() {
+    addNewComment = () => {
+        let tidslinje = {
+            id: -1, 
+            user: this.userRef.current.value,
+            timestampCreated: new Date().valueOf(),
+            timestampChanged: new Date().valueOf(),
+            start: this.props.selectStart,
+            end: this.props.selectEnd,
+            text: this.textRef.current.value.trim(),
+            like: this.likeYesRef.current.checked,
+            dislike: this.dislikeYesRef.current.checked,
+            isdeleted: false,
+            texttocommentid: JSON.parse(this.props.title).id
+        }
 
-        this.getChanges();
+     //   this.getChanges();
         //Add timeline
        // axios.post("")
          //   .then(res => {
@@ -116,7 +130,7 @@ export default class commentSchema extends React.Component {
                 </div>
                 <p class="h3" style={{ marginTop: '10px' }} >Create a comment </p>
                 <section id="kommentar">
-                    <form>
+               
                     <div class="form-group">
 
                         <label for="commentUser"> User: </label>
@@ -140,9 +154,9 @@ export default class commentSchema extends React.Component {
 
                             </div>
                                 <div class="row">
-                                    <button id="addTimeline" onClick="addNewComment()" class="btn btn-success col-1 m-1 p-1"><div class="text-wrap">Comment text</div></button>
+                            <button id="addTimeline" onClick={this.addNewComment} class="btn btn-success col-1 m-1 p-1"><div class="text-wrap">Comment text</div></button>
                             </div>
-                        </form>
+                
 
 
 
