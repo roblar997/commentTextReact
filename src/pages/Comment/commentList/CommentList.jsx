@@ -47,6 +47,12 @@ export default class CommentList extends React.Component {
         this.getChanges = this.getChanges.bind(this);
         this.changehighlightetcomment = this.changehighlightetcomment.bind(this);
         this.refresh = this.refresh.bind(this);
+
+        this.likeYesChange = React.createRef(null);
+        this.dislikeYesChangeRef = React.createRef(null);
+        this.likeDislikeNoChangeRef = React.createRef(null);
+        this.userChangeRef = React.createRef(null);
+        this.textChangeRef = React.createRef(null);
     }
 
 
@@ -203,12 +209,12 @@ export default class CommentList extends React.Component {
                         <form >
                             <div class="form-group">
                                 <label for="commentUser"> User: </label>
-                                <input class="form-control input-sm w-50" id="commentUserChange" placeholder=" user" value={this.state.toChange.user} /><br />
+                                <input class="form-control input-sm w-50" ref={this.userChangeRef} id="commentUserChange" placeholder=" user" value={this.state.toChange.user} /><br />
 
                             </div>
                             <div class="form-group">
                                 <label for="commentComment"> Comment: </label>
-                                <textarea class="form-control input-sm w-50" id="commentCommentChange" value={this.state.toChange.text} placeholder="Comment" rows="10">
+                                <textarea class="form-control input-sm w-50" ref={this.textChangeRef}  id="commentCommentChange" value={this.state.toChange.text} placeholder="Comment" rows="10">
                                 </textarea>
 
                             </div>
@@ -216,9 +222,9 @@ export default class CommentList extends React.Component {
                             <div class="form-group">
                                 <header> Do I like this part of text?</header>
                                 <div>
-                                    <label for="likeYes">Like:</label> <input value="like" type="radio" checked={this.state.toChange.like} id="likeYesChange" name="likedislikeother" />  <br />
-                                    <label for="dislikeYes">Dislike:</label> <input value="dislike" checked={this.state.toChange.dislike} type="radio" id="dislikeYesChange" name="likedislikeother" /><br />
-                                    <label for="likeDislikeNo">Don't know:</label>  <input value="dontknow" checked={!this.state.toChange.dislike && !this.state.toChange.like} type="radio" id="likeDislikeNoChange" name="likedislikeother"  />
+                                    <label for="likeYes">Like:</label> <input value="like" ref={this.likeYesChangeRef} type="radio" checked={this.state.toChange.like} id="likeYesChange" name="likedislikeother" />  <br />
+                                    <label for="dislikeYes">Dislike:</label> <input value="dislike" ref={this.dislikeYesChangeRef} checked={this.state.toChange.dislike} type="radio" id="dislikeYesChange" name="likedislikeother" /><br />
+                                    <label for="likeDislikeNo">Don't know:</label>  <input value="dontknow" ref={this.likeDislikeNoChangeRef} checked={!this.state.toChange.dislike && !this.state.toChange.like} type="radio" id="likeDislikeNoChange" name="likedislikeother"  />
 
                                 </div>
                             </div>

@@ -33,6 +33,12 @@ export default class commentSchema extends React.Component {
         this.dislikesChange = this.dislikesChange.bind(this);
         this.likesChange = this.likesChange.bind(this);
         this.getChanges = this.getChanges.bind(this);
+
+        this.likeYesRef = React.createRef(null);
+        this.dislikeYesRef = React.createRef(null);
+        this.likeDislikeNoRef = React.createRef(null);
+        this.userRef = React.createRef(null);
+        this.textRef = React.createRef(null);
     }
     selectStartChange = (selectStart) => () => {
         this.props.selectStartChangeCallback(selectStart)
@@ -114,21 +120,21 @@ export default class commentSchema extends React.Component {
                     <div class="form-group">
 
                         <label for="commentUser"> User: </label>
-                        <input class="form-control input-sm w-25" formControlName="user" id="commentUser" placeholder=" user" /><br/>
+                            <input class="form-control input-sm w-25" formControlName="user" ref={this.userRef} id="commentUser" placeholder=" user" /><br/>
                             {!this.state.validUser && <span style={{color:'red'}} > Wrong input</span> }
                     </div>
                     <div class="form-group">
                         <label for="commentComment"> Comment: </label>
-                        <textarea class="form-control input-sm w-25" formControlName="text" id="commentComment" placeholder="Comment" rows="10"></textarea>
+                            <textarea class="form-control input-sm w-25" formControlName="text" id="commentComment" ref={this.textRef} placeholder="Comment" rows="10"></textarea>
                             {!this.state.validText && <span style={{ color: 'red' }} > Wrong input</span> }
                 </div>
 
                 <div class="form-group">
                     <header> Do I like this part of text?</header>
                     <div>
-                        <label for="likeYes">Like:</label> <input formControlName="likedislikeother" value="like" type="radio" id="likeYes" name="likedislikeother"/>  <br/>
-                            <label for="dislikeYes">Dislike:</label> <input formControlName="likedislikeother" value="dislike" type="radio" id="dislikeYes" name="likedislikeother"/><br/>
-                                <label for="likeDislikeNo">Don't know:</label>  <input formControlName="likedislikeother" value="dontknow" type="radio" id="likeDislikeNo" name="likedislikeother" checked/><br/>
+                                <label for="likeYes">Like:</label> <input formControlName="likedislikeother" value="like" ref={this.likeYesRef}  type="radio" id="likeYes" name="likedislikeother"/>  <br/>
+                                <label for="dislikeYes">Dislike:</label> <input formControlName="likedislikeother" ref={this.dislikeYesRef}  value="dislike" type="radio" id="dislikeYes" name="likedislikeother"/><br/>
+                                <label for="likeDislikeNo">Don't know:</label>  <input formControlName="likedislikeother" ref={this.likeDislikeNoRef}  value="dontknow" type="radio" id="likeDislikeNo" name="likedislikeother" checked/><br/>
                                 {!this.state.validlikedislikeother && <span style={{ color: 'red' }} > Wrong input</span>}
                       </div>
 
