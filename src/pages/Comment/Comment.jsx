@@ -118,6 +118,7 @@ export default class Comment extends React.Component {
             titleList: [],
             likes: 0,
             dislikes: 0,
+            countingList:[],
             fenw: new FenwFeatureTree(1)
 
 
@@ -245,8 +246,7 @@ export default class Comment extends React.Component {
             this.state.fenw.addTimeline(timeline.start, timeline.end);
         }
 
- 
-     
+
     }
    
 
@@ -275,6 +275,10 @@ export default class Comment extends React.Component {
         //Load list of timelines
         this.tidslinjerListChange(tidslinjerList)
 
+        this.setState({
+            countingList: this.state.fenw.getCountingList(0, JSON.parse(title).text.length)
+        })
+        console.log(this.state.countingList)
        
                //Get new title info
         //axios.post("")
@@ -310,6 +314,7 @@ export default class Comment extends React.Component {
                                 filteredtimelines={this.state.filteredtimelines}
                                 likes={this.state.likes}
                                 dislikes={this.state.dislikes}
+                                countingList={this.state.countingList}
 
                                 likesChangeCallback={this.likesChange}
                                 dislikesChangeCallback={this.dislikesChange}
@@ -333,6 +338,7 @@ export default class Comment extends React.Component {
                                 filteredtimelines={this.state.filteredtimelines}
                                 likes={this.state.likes}
                                 dislikes={this.state.dislikes}
+                                countingList={this.state.countingList}
 
                                 doChangeCallback={this.doChange}
                                 likesChangeCallback={this.likesChange}
@@ -357,6 +363,7 @@ export default class Comment extends React.Component {
                                 filteredtimelines={this.state.filteredtimelines}
                                 likes={this.state.likes}
                                 dislikes={this.state.dislikes}
+                                countingList={this.state.countingList}
 
                                 doChangeCallback={this.doChange}
                                 likesChangeCallback={this.likesChange}
@@ -383,6 +390,7 @@ export default class Comment extends React.Component {
                             filteredtimelines={this.state.filteredtimelines}
                             likes={this.state.likes}
                             dislikes={this.state.dislikes}
+                            countingList={this.state.countingList}
 
                             doChangeCallback={this.doChange}
                             likesChangeCallback={this.likesChange}
