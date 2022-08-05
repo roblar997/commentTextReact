@@ -157,8 +157,8 @@ export default class Comment extends React.Component {
                 console.log("Supposed to do changes to timelines here. ADD ")
                 let tidslinjen = JSON.parse(JSON.stringify(commandtidslinjen.tidslinje));
                 nytidslinjeListe.push(tidslinjen);
-                //if (commandtidslinjen.tidslinje && commandtidslinjen.tidslinje.start && commandtidslinjen.tidslinje.end)
-                    //this.currentFenwick.addTimeline(commandtidslinjen.tidslinje.start, commandtidslinjen.tidslinje.end)
+                if (commandtidslinjen.tidslinje && commandtidslinjen.tidslinje.start && commandtidslinjen.tidslinje.end)
+                    this.state.fenw.addTimeline(commandtidslinjen.tidslinje.start, commandtidslinjen.tidslinje.end)
 
                 //Notify change to parrent, such that everyone now that we have a new tidslinje
 
@@ -179,7 +179,7 @@ export default class Comment extends React.Component {
                 nytidslinjeListe.splice(index, 1)
                 console.log("Supposed to do changes to timelines here. REMOVE ")
                 if (commandtidslinjen.tidslinje && commandtidslinjen.tidslinje.start && commandtidslinjen.tidslinje.end)
-                    this.currentFenwick.removeTimeline(commandtidslinjen.tidslinje.start, commandtidslinjen.tidslinje.end)
+                    this.state.fenw.removeTimeline(commandtidslinjen.tidslinje.start, commandtidslinjen.tidslinje.end)
 
 
 
