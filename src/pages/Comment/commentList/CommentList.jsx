@@ -46,6 +46,7 @@ export default class CommentList extends React.Component {
         this.likesChange = this.likesChange.bind(this);
         this.getChanges = this.getChanges.bind(this);
         this.changehighlightetcomment = this.changehighlightetcomment.bind(this);
+        this.refresh = this.refresh.bind(this);
     }
 
 
@@ -146,14 +147,16 @@ export default class CommentList extends React.Component {
     filteredTimelineListChange = (filteredTimelineListChange) => () => {
         this.props.tidslinjerListCallback(tidslinjerList)
     }
-
+    refresh() {
+        this.props.getChangesCallback();
+    }
     render() {
         return (
             <Fragment>
  <div class="form-group centered">
 
     
-    <p class="h3">Comments       <i onClick="refresh()" class="fa fa-refresh m-1" id="refreshComments"></i></p>
+                    <p class="h3">Comments       <i onClick={this.refresh} class="fa fa-refresh m-1" id="refreshComments"></i></p>
                     <p class="h3" style={{ marginTop: '10px' }}>Is a comment of following </p>
                     {this.state.ishighlighting && <div id="commentHighlight" style={{ overflowY: 'auto', width: '320px', height: '220px', marginTop: '10px' }} readonly> 
                         <span style={{ backgroundColor: 'white', color: 'black' }}>{JSON.parse(this.props.title).text.substring(0, this.state.highlightetcommentstart)}</span>

@@ -200,13 +200,7 @@ export default class Comment extends React.Component {
         //this.changelikes(likes);
        // this.changedislikes(dislikes);
     }
-    refresh() {
-        axios.post("")
-            .then(res => {
-
-            })
-    }
- 
+  
     selectEndChange = (selectedEnd) => {
         console.log(selectedEnd)
         this.setState({
@@ -259,6 +253,7 @@ export default class Comment extends React.Component {
     }
 
     getChanges() {
+        console.log("I am getting changes");
         let testCommand = "REMOVE";
         let testID = 1;
         let testTidslinje = { "id": testID, "user": "RR", "timestampCreated": 1657545938272, "timestampChanged": 1657545938272, "start": 0, "end": 10, "text": "RRR", "like": true, "dislike": false, "isdeleted": false, "texttocommentid": 1 }
