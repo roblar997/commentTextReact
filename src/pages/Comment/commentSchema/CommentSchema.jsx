@@ -32,17 +32,16 @@ export default class commentSchema extends React.Component {
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
         this.dislikesChange = this.dislikesChange.bind(this);
         this.likesChange = this.likesChange.bind(this);
-        this.doChange = this.doChange.bind(this);
+        this.getChanges = this.getChanges.bind(this);
     }
     selectStartChange = (selectStart) => () => {
         this.props.selectStartChangeCallback(selectStart)
 
 
     }
-    doChange(commandTidslinjeWrapper) {
-        this.props.doChangeCallback(commandTidslinjeWrapper)
+    getChanges = () => {
+        this.props.getChangesCallback();
     }
-
     selectEndChange = (selectedEnd) => () => {
         this.props.selectedEndChangeCallback(selectedEnd)
     }
@@ -84,16 +83,18 @@ export default class commentSchema extends React.Component {
     }
 
     addNewComment() {
+
+        this.getChanges();
         //Add timeline
-        axios.post("")
-            .then(res => {
+       // axios.post("")
+         //   .then(res => {
 
                 //Get changes
-                axios.post("")
-                    .then(res2 => {
+          //      axios.post("")
+          //          .then(res2 => {
 
-                    })
-            });
+          //          })
+         //   });
     }
 
     render() {

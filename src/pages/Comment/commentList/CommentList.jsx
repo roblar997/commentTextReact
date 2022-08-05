@@ -44,7 +44,7 @@ export default class CommentList extends React.Component {
         this.filteredTimelineListChange = this.filteredTimelineListChange.bind(this);
         this.dislikesChange = this.dislikesChange.bind(this);
         this.likesChange = this.likesChange.bind(this);
-        this.doChange = this.doChange.bind(this);
+        this.getChanges = this.getChanges.bind(this);
         this.changehighlightetcomment = this.changehighlightetcomment.bind(this);
     }
 
@@ -58,28 +58,28 @@ export default class CommentList extends React.Component {
 
 
     changeTimeline(id, tidslinjeChangeForm) {
-
+        this.getChanges();
         //Change timeline
-        axios.post("")
-            .then(res => {
+       // axios.post("")
+        //    .then(res => {
 
                 //Get changes
-                axios.post("")
-                    .then(res2 => {
+            //    axios.post("")
+            //        .then(res2 => {
 
-                    })
-            });
+           //         })
+          //  });
     }
     removeById(id) {
-        axios.post("")
-            .then(res => {
+        this.getChanges();
+       // axios.post("")
+        //    .then(res => {
 
-            });
+       //     });
     }
-    doChange(commandTidslinjeWrapper) {
-        this.props.doChangeCallback(commandTidslinjeWrapper)
+    getChanges = () => {
+        this.props.getChangesCallback();
     }
-
     close = () => {
         this.setState({ show: false });
     }
@@ -97,8 +97,8 @@ export default class CommentList extends React.Component {
       
         
     }
-    doChange = () => {
-        this.setState({ show: false });
+    getChanges = () => {
+        this.props.getChangesCallback();
     }
     selectStartChange = (selectStart) => () => {
         this.props.selectStartChangeCallback(selectStart)

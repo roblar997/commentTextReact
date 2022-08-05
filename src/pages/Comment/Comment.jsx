@@ -108,7 +108,6 @@ export default class Comment extends React.Component {
             selectStart: 0,
             selectEnd: 10,
             selectedText: "",
-            commandTidslinjeWrapper: [],
             title: JSON.stringify({
                 id: 1,
                 text: "",
@@ -119,7 +118,8 @@ export default class Comment extends React.Component {
             likes: 0,
             dislikes: 0,
             countingList:[],
-            fenw: new FenwFeatureTree(1)
+            fenw: new FenwFeatureTree(1),
+            timestamp: new Date().valueOf()
 
 
            };
@@ -134,6 +134,7 @@ export default class Comment extends React.Component {
            this.dislikesChange = this.dislikesChange.bind(this);
            this.likesChange = this.likesChange.bind(this);
 
+           this.getChanges = this.getChanges.bind(this);
            this.doChange = this.doChange.bind(this);
            this.state.titleList = ["twtw", "trett", "sjokolade", "TEST"]
     }
@@ -257,7 +258,22 @@ export default class Comment extends React.Component {
       
     }
 
+    getChanges() {
+        let testCommand = "REMOVE";
+        let commandTidslinjeWrapper = [];
 
+        if (testCommand == "REMOVE")
+            commandTidslinjeWrapper = [{ "command": "REMOVE", "tidslinje": { "id": testID, "user": "RR", "timestampCreated": 1657545938272, "timestampChanged": 1657545938272, "start": 0, "end": 10, "text": "RRR", "like": true, "dislike": false, "isdeleted": false, "texttocommentid": 1 } }];
+        else if (testCommand == "ADD")
+            commandTidslinjeWrapper = [{ "command": "ADD", "tidslinje": testTidslinje }];
+        else if (testCommand == "CHANGE")
+            commandTidslinjeWrapper = [{ "command": "CHANGE", "tidslinje": testTidslinje }];
+
+        else
+            return;
+        this.state.timestamp = new Date().valueOf()
+        this.doChange(commandTidslinjeWrapper)
+    }
 
     titleChange = (title) => {
      
@@ -272,6 +288,9 @@ export default class Comment extends React.Component {
             , [{ "id": 163, "user": "33333", "timestampCreated": 1657140339864, "timestampChanged": 1657140339864, "start": 239, "end": 430, "text": "TEST", "like": true, "dislike": false, "isdeleted": false, "texttocommentid": 10 }, { "id": 164, "user": "Per", "timestampCreated": 1657140456793, "timestampChanged": 1657140456793, "start": 1552, "end": 1595, "text": "Dette var en bra setning :D", "like": true, "dislike": false, "isdeleted": false, "texttocommentid": 10 }, { "id": 165, "user": "y", "timestampCreated": 1657141099800, "timestampChanged": 1657141099800, "start": 19954, "end": 22477, "text": "y", "like": true, "dislike": false, "isdeleted": false, "texttocommentid": 10 }]]
 
         let tidslinjerList = database.filter(x => x[0].texttocommentid == JSON.parse(title).id)[0]
+
+        this.state.timestamp = new Date().valueOf();
+
         //Load list of timelines
         this.tidslinjerListChange(tidslinjerList)
 
@@ -326,7 +345,7 @@ export default class Comment extends React.Component {
                                 titleListChangeCallback={this.titleListChange}
                                 titleChangeCallback={this.titleChange}
                                 filteredTimelineListChangeCallback={this.filteredTimelineListChange}
-                                doChangeCallback={this.doChange }
+                                getChangesCallback={this.getChanges }
                             ></TitleSearch>
                             <CommentSearchInfo
                                 selectStart={this.state.selectStart}
@@ -340,7 +359,7 @@ export default class Comment extends React.Component {
                                 dislikes={this.state.dislikes}
                                 countingList={this.state.countingList}
 
-                                doChangeCallback={this.doChange}
+                                getChangesCallback={this.getChanges}
                                 likesChangeCallback={this.likesChange}
                                 dislikesChangeCallback={this.dislikesChange}
                                 selectStartChangeCallback={this.selectStartChange}
@@ -365,7 +384,7 @@ export default class Comment extends React.Component {
                                 dislikes={this.state.dislikes}
                                 countingList={this.state.countingList}
 
-                                doChangeCallback={this.doChange}
+                                getChangesCallback={this.getChanges}
                                 likesChangeCallback={this.likesChange}
                                 dislikesChangeCallback={this.dislikesChange}
                                 selectStartChangeCallback={this.selectStartChange}
@@ -392,7 +411,7 @@ export default class Comment extends React.Component {
                             dislikes={this.state.dislikes}
                             countingList={this.state.countingList}
 
-                            doChangeCallback={this.doChange}
+                            getChangesCallback={this.getChanges}
                             likesChangeCallback={this.likesChange}
                             dislikesChangeCallback={this.dislikesChange}
                         selectStartChangeCallback={this.selectStartChange}
