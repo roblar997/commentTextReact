@@ -22,13 +22,13 @@ export default class CommentList extends React.Component {
             highlightetcommentstart: 0,
             highlightetcommentend: 10,
             show: false,
-            toChange: {
+            toChange: JSON.stringify({
                 id: -1,
                 user: "",
                 text: "tester",
                 like: false,
                 dislike: false
-            },
+            }),
             title:"aa"
 
 
@@ -52,7 +52,7 @@ export default class CommentList extends React.Component {
         this.likeYesChangeRef = React.createRef(null);
         this.dislikeYesChangeRef = React.createRef(null);
         this.likeDislikeNoChangeRef = React.createRef(null);
-        this.userChangeRef = React.createRef(null);
+        this.userChangeRef = React.createRef("User");
         this.textChangeRef = React.createRef(null);
         this.idChangeRef = React.createRef(null);
     }
@@ -110,14 +110,14 @@ export default class CommentList extends React.Component {
        
         this.setState({
             show: true,
-            toChange: {
+            toChange: JSON.stringify({
                 id: id,
                 user: user,
                 text: text,
                 like: like,
                 dislike: dislike
-            } });
-      
+            }) });
+        this.userChangeRef.current.value="sjoko"
         
     }
     getChanges = () => {
@@ -224,15 +224,15 @@ export default class CommentList extends React.Component {
                     </ModalHeader>
                     <ModalBody>
                         
-                            <input id="changeId" type="hidden" ref={this.idChangeRef} value={this.state.toChange.id}></input>
+                            <input id="changeId" type="hidden" ref={this.idChangeRef}></input>
                             <div class="form-group">
                                 <label for="commentUser"> User: </label>
-                                <input class="form-control input-sm w-50" ref={this.userChangeRef} id="commentUserChange" placeholder=" user" value={this.state.toChange.user} /><br />
+                            <input class="form-control input-sm w-50" ref={this.userChangeRef} placeholder={JSON.parse(this.state.toChange).user} id="commentUserChange"  /><br />
 
                             </div>
                             <div class="form-group">
                                 <label for="commentComment"> Comment: </label>
-                                <textarea class="form-control input-sm w-50" ref={this.textChangeRef}  id="commentCommentChange" value={this.state.toChange.text} placeholder="Comment" rows="10">
+                            <textarea class="form-control input-sm w-50" ref={this.textChangeRef} id="commentCommentChange"  placeholder={JSON.parse(this.state.toChange).text} rows="10">
                                 </textarea>
 
                             </div>
@@ -240,9 +240,9 @@ export default class CommentList extends React.Component {
                             <div class="form-group">
                                 <header> Do I like this part of text?</header>
                                 <div>
-                                    <label for="likeYes">Like:</label> <input value="like" ref={this.likeYesChangeRef} type="radio" checked={this.state.toChange.like} id="likeYesChange" name="likedislikeother" />  <br />
-                                    <label for="dislikeYes">Dislike:</label> <input value="dislike" ref={this.dislikeYesChangeRef} checked={this.state.toChange.dislike} type="radio" id="dislikeYesChange" name="likedislikeother" /><br />
-                                    <label for="likeDislikeNo">Don't know:</label>  <input value="dontknow" ref={this.likeDislikeNoChangeRef} checked={!this.state.toChange.dislike && !this.state.toChange.like} type="radio" id="likeDislikeNoChange" name="likedislikeother"  />
+                                <label for="likeYes">Like:</label> <input value="like" ref={this.likeYesChangeRef} type="radio" defaultChecked={JSON.parse(this.state.toChange).like} id="likeYesChange" name="likedislikeother" />  <br />
+                                <label for="dislikeYes">Dislike:</label> <input value="dislike" ref={this.dislikeYesChangeRef} defaultChecked={JSON.parse(this.state.toChange).dislike} type="radio" id="dislikeYesChange" name="likedislikeother" /><br />
+                                    <label for="likeDislikeNo">Don't know:</label>  <input value="dontknow" ref={this.likeDislikeNoChangeRef} defaultChecked={!JSON.parse(this.state.toChange).dislike && !JSON.parse(this.state.toChange).like} type="radio" id="likeDislikeNoChange" name="likedislikeother"  />
 
                                 </div>
                             </div>
