@@ -80,7 +80,7 @@ export default class CommentList extends React.Component {
             isdeleted: false,
             texttocommentid: JSON.parse(this.props.title).id
         }
-        console.log(this.userChangeRef.current.value)
+        console.log(tidslinje)
        // this.getChanges();
         //Change timeline
        // axios.post("")
@@ -223,8 +223,8 @@ export default class CommentList extends React.Component {
                         <ModalTitle>Change comment</ModalTitle>
                     </ModalHeader>
                     <ModalBody>
-                        
-                            <input id="changeId" type="hidden" ref={this.idChangeRef}></input>
+
+                        <input id="changeId" type="hidden" ref={this.idChangeRef} value={JSON.parse(this.state.toChange).id}></input>
                             <div class="form-group">
                                 <label for="commentUser"> User: </label>
                             <input class="form-control input-sm w-50" ref={this.userChangeRef} placeholder={JSON.parse(this.state.toChange).user} id="commentUserChange"  /><br />
